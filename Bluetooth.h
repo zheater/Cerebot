@@ -12,8 +12,8 @@
 #include "IOConfig.h"
 
 typedef struct {
-    char name[];
-    char address[];
+    char* name;
+    char* address;
 } Bluetooth;
 
 Bluetooth bt;

@@ -47,7 +47,7 @@ void motor_service(void)
         count = 1;
     }
     
-    hexValue = keypad();
+    
     pwm_main();
     
     
@@ -74,7 +74,7 @@ void __attribute__((interrupt(single),vector(0),nomips16)) isr_handler(void)
     __asm__ volatile("di");     //Disable all interrupts
     
     
-    if((IFS0 & TMR5INTFLAG) >> TMR5INTFLAG == 1) {
+    if(((IFS0 & TMR5INTMASK) >> TMR5INTFLAG) == 1) {
         motor_service();
         IFS0CLR = (1 << TMR5INTFLAG);    //Clear interrupt flag
     }
@@ -85,6 +85,5 @@ void __attribute__((interrupt(single),vector(0),nomips16)) isr_handler(void)
     
     
     
-    __asm__ volatile("ei");     //Enable all interrupts
-    return;   
+    __asm__ volatile("ei");     //Enable all interrupts  
 }

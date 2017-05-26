@@ -3,7 +3,7 @@
 void bt_init(Bluetooth *bt)
 {
     bt->name = MYBTNAME;
-    bt->address = MYBTADDR
+    bt->address = MYBTADDR;
             
             
     //Enable UART1

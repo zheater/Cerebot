@@ -216,7 +216,7 @@ void spi_init();
     *
     *                                              PCIE SCIE BOEN SDAHT SBCDE AHEN DHEN
     * [31] [30] [29] [28] [27] [26] [25] [24] [23] [22] [21] [20]  [19]  [18] [17] [16]
-    *                                                0    0    0     1     0    0    0   ---> 0x0008
+    *                                                0    0    0     0     0    0    0   ---> 0x0000
      * 
     * ON: I2C enable bit -- 1 = Enables the I2C module and configures the SDAx and SCLx pins as serial port pins, 0 = Disabled I2C; all I2C pins are controlled by PORT functions
     * SIDL: Stop in idle mode bit -- 1 = Discontinue module operation when the device enters idle mode, 0 = Continue module operation in idle mode
@@ -236,8 +236,10 @@ void spi_init();
     * 
     *  ON       SIDL SCLREL STRICT A10M DISSLW SMEN GCEN STREN ACKDT ACKEN RCEN  PEN RSEN  SEN
     * [15] [14] [13]  [12]   [11]  [10]  [ 9]  [ 8] [ 7]  [ 6]  [ 5]  [ 4] [ 3] [ 2] [ 1] [ 0]
-    * 
+    *   1    0    1     0      0     0     0     0    0     0     0     0    0    0    0    0
     */ 
+#define I2C1_CON            0x0000A000
+
 
 
    /*I2C1 Status Register
@@ -330,10 +332,6 @@ void spi_init();
     * 
     */
 
-
-
-    
-    
     
     
         /*I2C1 Control Register
@@ -427,13 +425,15 @@ void spi_init();
     * 
     *                                              
     * [31] [30] [29] [28] [27] [26] [25] [24] [23] [22] [21] [20] [19] [18] [17] [16]
+    *   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    --> 0x0000
     * 
     * BRG: I2C baud rate generator value bits. These bits control the divider function of the peripheral clock.
     *
     * <------------------------------------ BRG ------------------------------------>
     * [15] [14] [13] [12] [11] [10] [ 9] [ 8] [ 7] [ 6] [ 5] [ 4] [ 3] [ 2] [ 1] [ 0]
-    * 
+    *   0    0    0    0    0    0    0    0    0    0    0    0    1    0    1    0    --> 0x000A
     */
+#define I2C1_BRG            0xA;    //400kHz
 
 
    /*I2C1 Transmit Data Register
@@ -463,7 +463,7 @@ void spi_init();
 
 void i2c_init(void);
 void i2c_delay(void);
-void i2c_start(void);
+uint8_t i2c_start(void);
 void i2c_stop(void);
-uint8_t i2c_rx(uint8_t databyte);
-bool i2c_tx(uint8_t txbyte);
+void i2c_rx(unsigned short chipAddress, unsigned short int address, unsigned char * buffer, int numBytesToRead);
+void i2c_tx(unsigned short chipAddress,unsigned short int address, unsigned char * dataToWrite, int numBytesToWrite);

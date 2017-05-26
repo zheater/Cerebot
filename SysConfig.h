@@ -11,9 +11,12 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define SET_OFFSET      0x8
 #define CLR_OFFSET      0x4
+#define SET_OFFSET      0x8
 #define INV_OFFSET      0xC
+#define FALSE           (0)
+#define TRUE            !FALSE
+
 
 
 /****************************************************
@@ -536,6 +539,7 @@ typedef struct {
 #define TMR_START           0x00008000
 #define TMR5INIT            0x0
 #define TMR5INTFLAG         20
+#define TMR5INTMASK         0x100000
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -603,8 +607,8 @@ typedef struct {
 
 #define U1RXINT             27
 #define U1TXINT             28
-#define U1RXINT             41
-#define U1TXINT             42
+#define U2RXINT             41
+#define U2TXINT             42
 
 
 

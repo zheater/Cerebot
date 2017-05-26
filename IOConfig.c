@@ -178,40 +178,151 @@ void spi_init()
 
 void i2c_init(void)
 {   
+    I2C1CON = 0x0;
+    I2C1BRG = I2C1_BRG;
+    I2C1STAT = 0x0;
+    I2C1CON = I2C1_CON;
     
     return;
 }
 
 
-void i2c_delay(void)
+void i2c_idle(void)
 {
+    uint16_t t = 0x08FF;
+    
+    //While I2C Bus is active
+    //while (I2CCONbits.SEN || I2CCONbits.PEN || I2CCONbits.RCEN ||
+    //        I2CCONbits.RSEN || I2CCONbits.ACKEN || I2CSTATbits.TRSTAT || t--);
+    
     return;
 }
 
 
-void i2c_start(void)
+uint8_t i2c_start(void)
 {
+    i2c_idle();
+    
+    /*// Enable the Start condition
+    I2CCONbits.SEN = 1;
+
+    // Check for collisions
+    if (I2CSTATbits.BCL) 
+    {
+        return (FALSE);
+    } 
+    else 
+    {
+        I2CIdle();
+        return (TRUE);
+    }*/
     return;
 }
 
 
 void i2c_stop(void)
 {
+    i2c_idle();
+    
+    /*// wait for module idle
+    I2CIdle();
+    
+	//initiate stop bit
+    I2CCONbits.PEN = 1;
+    
+    //wait for hardware clear of stop bit
+    while (I2CCONbits.PEN) 
+    {
+        if (x++ > 50) 
+            break;
+    }
+    
+    I2CCONbits.RCEN = 0;
+    I2CSTATbits.IWCOL = 0;
+    I2CSTATbits.BCL = 0;*/
     return;
 }
 
 
-uint8_t i2c_rx(uint8_t databyte)
+void i2c_rx(unsigned short chipAddress, unsigned short int address, unsigned char * buffer, int numBytesToRead)
 {
-    uint8_t rx;
+    /*    int i;
+	// 7 Bit addresses only
+    char icAddr = (char) chipAddress & 0x00FF;
+
+    I2CStart();
     
-    return rx;
+    I2CTRN = (icAddr << 1) | WRITE_OP;         // Address of EEPROM - Write      
+    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    I2CIdle();
+    
+    I2CTRN = address >> 8;;
+    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    I2CIdle();
+    
+    I2CTRN = address & 0x00FF;
+    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    
+    I2CStart();
+    
+    I2CTRN = (icAddr << 1) | READ_OP;
+    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    I2CIdle();	// Might not need
+    
+    for (i=0; i< numBytesToRead; i++)
+    {
+        I2CIdle();
+
+        I2CCONbits.RCEN = 1; // enable master read
+        while (I2CCONbits.RCEN); // wait for byte to be received !(I2CSTATbits.RBF)
+        I2CIdle();
+
+        I2CSTATbits.I2COV = 0;
+        I2CIdle();
+        
+        buffer[i] = I2C1RCV;
+        
+        if (i+1 == numBytesToRead)
+        {
+            I2CCONbits.ACKDT = 1; // send nack on last read
+            I2CCONbits.ACKEN = 1;            
+            I2CStop();
+        }
+        else
+        {
+            I2CCONbits.ACKDT = 0; // send ack if more data to get
+            I2CCONbits.ACKEN = 1;
+        }
+    }
+    return;*/
 }
 
 
-bool i2c_tx(uint8_t txbyte)
+void i2c_tx(unsigned short chipAddress,unsigned short int address, unsigned char * dataToWrite, int numBytesToWrite)
 {
-    bool ack;
+    /*int i;
     
-    return ack;
+    char icAddr = (char) chipAddress & 0x00FF;    
+
+    // Set the start Bit
+    I2CStart();
+    
+    I2CTRN = (icAddr << 1) | WRITE_OP;         // Address of EEPROM - Write      
+    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    I2CIdle();
+    
+    I2CTRN = address >> 8;
+    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    I2CIdle();
+    
+    I2CTRN = address & 0x00FF;
+    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    
+    for (i=0; i<numBytesToWrite; i++)
+    {
+        I2CIdle();
+        I2CTRN = dataToWrite[i];
+    }
+        
+    I2CStop();*/
 }
