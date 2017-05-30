@@ -123,22 +123,22 @@ Microchip PIC32 Memory-Usage Report
 kseg0 Program-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-.text                   0x9d000000          0xaa0        2720  App's exec code 
-.text                   0x9d000aa0          0x558        1368  App's exec code 
-.text.general_exception 0x9d000ff8           0xdc         220   
-.text                   0x9d0010d4           0xe0         224  App's exec code 
-.text.main_entry        0x9d0011b4           0x54          84   
-.text._bootstrap_except 0x9d001208           0x48          72   
-.text._general_exceptio 0x9d001250           0x48          72   
-.vector_default         0x9d001298           0x48          72   
-.text                   0x9d0012e0           0x44          68  App's exec code 
-.rodata                 0x9d001324           0x1c          28  Read-only const 
-.text                   0x9d001340           0x18          24  App's exec code 
-.dinit                  0x9d001358           0x10          16   
-.text.__exception_handl 0x9d001368            0xc          12   
-.text._on_reset         0x9d001374            0x8           8   
-.text._on_bootstrap     0x9d00137c            0x8           8   
-      Total kseg0_program_mem used  :      0x1384        4996  1.0% of 0x80000
+.text                   0x9d000000         0x138c        5004  App's exec code 
+.text                   0x9d00138c          0x5b8        1464  App's exec code 
+.text.general_exception 0x9d001944           0xdc         220   
+.text                   0x9d001a20           0xe0         224  App's exec code 
+.text.main_entry        0x9d001b00           0x54          84   
+.text._bootstrap_except 0x9d001b54           0x48          72   
+.text._general_exceptio 0x9d001b9c           0x48          72   
+.vector_default         0x9d001be4           0x48          72   
+.text                   0x9d001c2c           0x44          68  App's exec code 
+.rodata                 0x9d001c70           0x1c          28  Read-only const 
+.text                   0x9d001c8c           0x18          24  App's exec code 
+.dinit                  0x9d001ca4           0x10          16   
+.text.__exception_handl 0x9d001cb4            0xc          12   
+.text._on_reset         0x9d001cc0            0x8           8   
+.text._on_bootstrap     0x9d001cc8            0x8           8   
+      Total kseg0_program_mem used  :      0x1cd0        7376  1.4% of 0x80000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -205,7 +205,7 @@ section                    address  length [bytes]      (dec)  Description
 .dbg_excpt              0xbfc00480            0x8           8   
          Total kseg1_boot_mem used  :       0x220         544  46.6% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0x172c        5932  1.1% of 0x81e00
+         Total Program Memory used  :      0x2078        8312  1.6% of 0x81e00
         --------------------------------------------------------------------------
 
 
@@ -1024,91 +1024,91 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1612
+.debug_info     0x00000000     0x18f4
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0xe4 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_info    0x000000e4      0x3a4 build/default/debug/newfile.o
- .debug_info    0x00000488      0x12a build/default/debug/TimerConfig.o
- .debug_info    0x000005b2      0x342 build/default/debug/Schedule.o
- .debug_info    0x000008f4      0x2c9 build/default/debug/MTRControl.o
- .debug_info    0x00000bbd      0x1b4 build/default/debug/Bluetooth.o
- .debug_info    0x00000d71      0x42f build/default/debug/IOConfig.o
- .debug_info    0x000011a0       0xf5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_info    0x00001295       0xce /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_info    0x00001363       0xd6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_info    0x00001439       0xf1 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_info    0x0000152a       0xe8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_info    0x000000e4      0x54e build/default/debug/newfile.o
+ .debug_info    0x00000632      0x12a build/default/debug/TimerConfig.o
+ .debug_info    0x0000075c      0x342 build/default/debug/Schedule.o
+ .debug_info    0x00000a9e      0x2c9 build/default/debug/MTRControl.o
+ .debug_info    0x00000d67      0x1b4 build/default/debug/Bluetooth.o
+ .debug_info    0x00000f1b      0x567 build/default/debug/IOConfig.o
+ .debug_info    0x00001482       0xf5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_info    0x00001577       0xce /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_info    0x00001645       0xd6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_info    0x0000171b       0xf1 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_info    0x0000180c       0xe8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_abbrev   0x00000000      0x5d5
+.debug_abbrev   0x00000000      0x669
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_abbrev  0x00000028       0xd9 build/default/debug/newfile.o
- .debug_abbrev  0x00000101       0x44 build/default/debug/TimerConfig.o
- .debug_abbrev  0x00000145      0x119 build/default/debug/Schedule.o
- .debug_abbrev  0x0000025e       0xba build/default/debug/MTRControl.o
- .debug_abbrev  0x00000318       0xa7 build/default/debug/Bluetooth.o
- .debug_abbrev  0x000003bf      0x14e build/default/debug/IOConfig.o
- .debug_abbrev  0x0000050d       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_abbrev  0x00000535       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_abbrev  0x0000055d       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_abbrev  0x00000585       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_abbrev  0x000005ad       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_abbrev  0x00000028      0x157 build/default/debug/newfile.o
+ .debug_abbrev  0x0000017f       0x44 build/default/debug/TimerConfig.o
+ .debug_abbrev  0x000001c3      0x119 build/default/debug/Schedule.o
+ .debug_abbrev  0x000002dc       0xba build/default/debug/MTRControl.o
+ .debug_abbrev  0x00000396       0xa7 build/default/debug/Bluetooth.o
+ .debug_abbrev  0x0000043d      0x164 build/default/debug/IOConfig.o
+ .debug_abbrev  0x000005a1       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_abbrev  0x000005c9       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_abbrev  0x000005f1       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_abbrev  0x00000619       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_abbrev  0x00000641       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_line     0x00000000      0x9a2
+.debug_line     0x00000000      0xa4a
  *(.debug_line)
  .debug_line    0x00000000       0x9a /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_line    0x0000009a      0x13a build/default/debug/newfile.o
- .debug_line    0x000001d4       0xb3 build/default/debug/TimerConfig.o
- .debug_line    0x00000287       0xf4 build/default/debug/Schedule.o
- .debug_line    0x0000037b       0xf2 build/default/debug/MTRControl.o
- .debug_line    0x0000046d       0xcd build/default/debug/Bluetooth.o
- .debug_line    0x0000053a      0x14a build/default/debug/IOConfig.o
- .debug_line    0x00000684       0xa7 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_line    0x0000072b       0x94 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_line    0x000007bf       0x98 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_line    0x00000857       0xa5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_line    0x000008fc       0xa6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_line    0x0000009a      0x17a build/default/debug/newfile.o
+ .debug_line    0x00000214       0xb3 build/default/debug/TimerConfig.o
+ .debug_line    0x000002c7       0xf4 build/default/debug/Schedule.o
+ .debug_line    0x000003bb       0xf2 build/default/debug/MTRControl.o
+ .debug_line    0x000004ad       0xcd build/default/debug/Bluetooth.o
+ .debug_line    0x0000057a      0x1b2 build/default/debug/IOConfig.o
+ .debug_line    0x0000072c       0xa7 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_line    0x000007d3       0x94 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_line    0x00000867       0x98 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x000008ff       0xa5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_line    0x000009a4       0xa6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_frame    0x00000000      0x488
+.debug_frame    0x00000000      0x524
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_frame   0x00000020       0x48 build/default/debug/newfile.o
- .debug_frame   0x00000068       0x30 build/default/debug/TimerConfig.o
- .debug_frame   0x00000098       0xac build/default/debug/Schedule.o
- .debug_frame   0x00000144       0xa4 build/default/debug/MTRControl.o
- .debug_frame   0x000001e8       0x30 build/default/debug/Bluetooth.o
- .debug_frame   0x00000218      0x1b8 build/default/debug/IOConfig.o
- .debug_frame   0x000003d0       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_frame   0x000003fc       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_frame   0x0000041c       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_frame   0x0000043c       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_frame   0x00000468       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_frame   0x00000020       0x68 build/default/debug/newfile.o
+ .debug_frame   0x00000088       0x30 build/default/debug/TimerConfig.o
+ .debug_frame   0x000000b8       0xac build/default/debug/Schedule.o
+ .debug_frame   0x00000164       0xa4 build/default/debug/MTRControl.o
+ .debug_frame   0x00000208       0x30 build/default/debug/Bluetooth.o
+ .debug_frame   0x00000238      0x234 build/default/debug/IOConfig.o
+ .debug_frame   0x0000046c       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_frame   0x00000498       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_frame   0x000004b8       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_frame   0x000004d8       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_frame   0x00000504       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_str      0x00000000        0xc
+.debug_str      0x00000000       0x15
  *(.debug_str)
  .debug_str     0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_str     0x00000000        0x0 build/default/debug/newfile.o
- .debug_str     0x00000000        0x0 build/default/debug/TimerConfig.o
- .debug_str     0x00000000        0x0 build/default/debug/Schedule.o
- .debug_str     0x00000000        0x0 build/default/debug/MTRControl.o
- .debug_str     0x00000000        0x0 build/default/debug/Bluetooth.o
- .debug_str     0x00000000        0xc build/default/debug/IOConfig.o
- .debug_str     0x0000000c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_str     0x0000000c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_str     0x0000000c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_str     0x0000000c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_str     0x0000000c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_str     0x00000000        0x9 build/default/debug/newfile.o
+ .debug_str     0x00000009        0x0 build/default/debug/TimerConfig.o
+ .debug_str     0x00000009        0x0 build/default/debug/Schedule.o
+ .debug_str     0x00000009        0x0 build/default/debug/MTRControl.o
+ .debug_str     0x00000009        0x0 build/default/debug/Bluetooth.o
+ .debug_str     0x00000009        0xc build/default/debug/IOConfig.o
+ .debug_str     0x00000015        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_str     0x00000015        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_str     0x00000015        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_str     0x00000015        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_str     0x00000015        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_loc      0x00000000      0x903
+.debug_loc      0x00000000      0xd91
  *(.debug_loc)
- .debug_loc     0x00000000       0xdc build/default/debug/newfile.o
- .debug_loc     0x000000dc       0x38 build/default/debug/TimerConfig.o
- .debug_loc     0x00000114      0x119 build/default/debug/Schedule.o
- .debug_loc     0x0000022d      0x118 build/default/debug/MTRControl.o
- .debug_loc     0x00000345       0x6f build/default/debug/Bluetooth.o
- .debug_loc     0x000003b4      0x4f7 build/default/debug/IOConfig.o
- .debug_loc     0x000008ab       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_loc     0x000008d7       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_loc     0x00000000      0x1d7 build/default/debug/newfile.o
+ .debug_loc     0x000001d7       0x38 build/default/debug/TimerConfig.o
+ .debug_loc     0x0000020f      0x119 build/default/debug/Schedule.o
+ .debug_loc     0x00000328      0x118 build/default/debug/MTRControl.o
+ .debug_loc     0x00000440       0x6f build/default/debug/Bluetooth.o
+ .debug_loc     0x000004af      0x88a build/default/debug/IOConfig.o
+ .debug_loc     0x00000d39       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_loc     0x00000d65       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1565,105 +1565,109 @@ LOAD data_init
 .data           0x00000000        0x0
  .data          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
 
-.text           0x9d000000      0xaa0
- .text          0x9d000000      0x718 build/default/debug/IOConfig.o
+.text           0x9d000000     0x138c
+ .text          0x9d000000      0xd58 build/default/debug/IOConfig.o
                 0x9d000000                gpio_init
-                0x9d000050                keypad
-                0x9d0003bc                uart_init
-                0x9d000420                uart1_enable
-                0x9d000454                uart1_putc
-                0x9d0004b8                uart1_puts
-                0x9d000520                uart1_rx
-                0x9d000544                spi_init
-                0x9d0005b8                i2c_init
-                0x9d000614                i2c_idle
-                0x9d000640                i2c_start
-                0x9d000674                i2c_stop
-                0x9d0006a8                i2c_rx
-                0x9d0006e0                i2c_tx
- .text          0x9d000718      0x388 build/default/debug/Schedule.o
-                0x9d000718                interrupt_setup
-                0x9d0007e4                motor_service
-                0x9d00091c                isr_handler
+                0x9d00005c                keypad
+                0x9d0003c8                uart_init
+                0x9d00041c                uart1_enable
+                0x9d000470                uart1_disable
+                0x9d0004c4                uart1_putc
+                0x9d000524                uart1_puts
+                0x9d00058c                uart1_rx
+                0x9d0005b0                spi_init
+                0x9d0005f4                oled_poweron
+                0x9d0006c8                oled_powerdown
+                0x9d0006ec                i2c_init
+                0x9d000748                i2c_idle
+                0x9d000830                i2c_start
+                0x9d0008a4                i2c_stop
+                0x9d000960                i2c_rx
+                0x9d000bb0                i2c_tx
+ .text          0x9d000d58      0x634 build/default/debug/newfile.o
+                0x9d000d58                main
+                0x9d001058                delay
+                0x9d0010a8                pmodTempAndHumnity
 
-.text           0x9d000aa0      0x558
- .text          0x9d000aa0      0x328 build/default/debug/newfile.o
-                0x9d000aa0                main
-                0x9d000d78                delay
- .text          0x9d000dc8      0x230 build/default/debug/MTRControl.o
-                0x9d000dc8                mtr_init
-                0x9d000e1c                pwm_config
-                0x9d000e48                pwm_main
-                0x9d000f78                pwm_ds_adjust
-                0x9d000fc4                enable_mtr
+.text           0x9d00138c      0x5b8
+ .text          0x9d00138c      0x388 build/default/debug/Schedule.o
+                0x9d00138c                interrupt_setup
+                0x9d001458                motor_service
+                0x9d001590                isr_handler
+ .text          0x9d001714      0x230 build/default/debug/MTRControl.o
+                0x9d001714                mtr_init
+                0x9d001768                pwm_config
+                0x9d001794                pwm_main
+                0x9d0018c4                pwm_ds_adjust
+                0x9d001910                enable_mtr
 
 .text.general_exception
-                0x9d000ff8       0xdc
+                0x9d001944       0xdc
  .text.general_exception
-                0x9d000ff8       0xdc /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(general-exception.o)
-                0x9d000ff8                _general_exception_context
+                0x9d001944       0xdc /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(general-exception.o)
+                0x9d001944                _general_exception_context
 
-.text           0x9d0010d4       0xe0
- .text          0x9d0010d4       0x78 build/default/debug/TimerConfig.o
-                0x9d0010d4                timer_init
- .text          0x9d00114c       0x68 build/default/debug/Bluetooth.o
-                0x9d00114c                bt_init
+.text           0x9d001a20       0xe0
+ .text          0x9d001a20       0x78 build/default/debug/TimerConfig.o
+                0x9d001a20                timer_init
+ .text          0x9d001a98       0x68 build/default/debug/Bluetooth.o
+                0x9d001a98                bt_init
 
 .text.main_entry
-                0x9d0011b4       0x54
+                0x9d001b00       0x54
  .text.main_entry
-                0x9d0011b4       0x54 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
-                0x9d0011e8                __crt0_exit
+                0x9d001b00       0x54 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
+                0x9d001b34                __crt0_exit
 
 .text._bootstrap_exception_handler
-                0x9d001208       0x48
+                0x9d001b54       0x48
  .text._bootstrap_exception_handler
-                0x9d001208       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
-                0x9d001208                _bootstrap_exception_handler
+                0x9d001b54       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+                0x9d001b54                _bootstrap_exception_handler
 
 .text._general_exception_handler
-                0x9d001250       0x48
+                0x9d001b9c       0x48
  .text._general_exception_handler
-                0x9d001250       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
-                0x9d001250                _general_exception_handler
+                0x9d001b9c       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+                0x9d001b9c                _general_exception_handler
 
 .vector_default
-                0x9d001298       0x48
+                0x9d001be4       0x48
  .vector_default
-                0x9d001298       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
-                0x9d001298                _DefaultInterrupt
+                0x9d001be4       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+                0x9d001be4                _DefaultInterrupt
 
-.text           0x9d0012e0       0x44
- .text          0x9d0012e0       0x44 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/pic32_software_reset.o
-                0x9d0012e0                __pic32_software_reset
+.text           0x9d001c2c       0x44
+ .text          0x9d001c2c       0x44 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/pic32_software_reset.o
+                0x9d001c2c                __pic32_software_reset
 
-.rodata         0x9d001324       0x1c
- .rodata        0x9d001324       0x1c build/default/debug/Bluetooth.o
+.rodata         0x9d001c70       0x1c
+ .rodata        0x9d001c70       0x1c build/default/debug/Bluetooth.o
 
-.text           0x9d001340       0x18
- .text          0x9d001340       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-nmi-handler.o)
-                0x9d001340                _nmi_handler
+.text           0x9d001c8c       0x18
+ .text          0x9d001c8c       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-nmi-handler.o)
+                0x9d001c8c                _nmi_handler
 
-.dinit          0x9d001358       0x10
- .dinit         0x9d001358       0x10 data_init
+.dinit          0x9d001ca4       0x10
+ .dinit         0x9d001ca4       0x10 data_init
 
 .text.__exception_handler_break
-                0x9d001368        0xc
+                0x9d001cb4        0xc
  .text.__exception_handler_break
-                0x9d001368        0xc /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
-                0x9d001368                __exception_handler_break
+                0x9d001cb4        0xc /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
+                0x9d001cb4                __exception_handler_break
 
 .text._on_reset
-                0x9d001374        0x8
+                0x9d001cc0        0x8
  .text._on_reset
-                0x9d001374        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
-                0x9d001374                _on_reset
+                0x9d001cc0        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+                0x9d001cc0                _on_reset
 
 .text._on_bootstrap
-                0x9d00137c        0x8
+                0x9d001cc8        0x8
  .text._on_bootstrap
-                0x9d00137c        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
-                0x9d00137c                _on_bootstrap
+                0x9d001cc8        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+                0x9d001cc8                _on_bootstrap
 
 .text           0x00000000        0x0
  .text          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)

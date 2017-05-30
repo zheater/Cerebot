@@ -1,4 +1,8 @@
 #include "IOConfig.h"
+#include "OLEDrgb.h"
+
+
+#define TIMER_LIMIT     12000
 
 
 
@@ -15,6 +19,12 @@ void gpio_init(void)
     
     //Using Port A for motor control
     TRISA = 0xF0; //2 & 3 are outputs for motor control, 6 & 7 are button inputs for speed adjust
+    
+    //Using Port F for UART to LCD -- U1TX/RF8
+    TRISF = 0x0;
+    
+    //Using Port D for OLED SPI
+    //TRISD = 0x0;  -- DELETE
     
     return;
 }
@@ -102,23 +112,32 @@ void uart_init(void)
     U1MODE = U1_MODE;
     U1STA = U1_STA;
     U1BRG = U1_BRG;
-    
-    
-    U1MODESET = UARTON;
-    
+        
     return;
 }
 
 void uart1_enable(void)
 {
-    U1MODESET = (1 << 15);
+    U1MODESET = UARTON;
+    U1STASET = TXEN;
+    U1STASET = RXEN;
+    return;
+}
+
+void uart1_disable(void)
+{
+    U1MODECLR = UARTOFF;
+    U1STACLR = TXDIS;
+    U1STACLR = RXDIS;
     return;
 }
 
 void uart1_putc(unsigned char c)
 {
-    while(U1_TRMT != 1)     //Wait until transmit shift register is empty
-    U1TXREG = c;
+    while(U1_TRMT != 1){}     //Wait until transmit shift register is empty
+    //U1TXREG = c;
+    U1TXREG = 'A';
+    
         
     return;
 }
@@ -150,19 +169,60 @@ void uart1_rx(void)
  ****************************************************/
 void spi_init()
 {
-	//Initialize SPI1 Control Register
-	SPI1->CON = SPI_1_CON;
-
-	//Initialize SPI1 Baud Rate Register
-	SPI1->BRG = SPI_1_BRG;
-
-	//Initialize SPI2 Control Register
-	SPI2->CON = SPI_2_CON;
-
-	//Initialize SPI2 Baud Rate Register
-	SPI2->BRG = SPI_2_BRG;
+    SPI1CON = SPI_1_CON;
+    SPI1BRG = SPI_1_BRG;
 
 	return;
+}
+
+void oled_poweron()
+{
+    /* Per OLED reference material
+     * 
+     * Apply power to VCC
+     * Send Display Off command
+     * Initialize display to default settings
+     * Clean screen
+     * Apply power to VCCEN
+     * Delay 100ms
+     * Send Display On command
+     *
+     */
+    
+    //Display Off command
+    while(SPIBUSY(SPI1CON));
+    SPI1BUF = CMD_DISPLAYOFF;
+    
+    //Initialize display/default settings -- TODO
+    
+    //Clear screen
+    while(SPIBUSY(SPI1CON));
+    SPI1BUF = CMD_CLEARWINDOW;
+    
+    //Apply power to VCCEN
+    PORTDSET = (1 << 10);   //Fix this up a bit
+    
+    //Delay
+    delay();
+    
+    //Send Display On command
+    while(SPIBUSY(SPI1CON));
+    SPI1BUF = CMD_DISPLAYON;
+    
+    
+    return;
+}
+void oled_powerdown()
+{
+    /* Per OLED reference material
+     * 
+     * Send Display Off command
+     * Power off VCCEN
+     * Delay 100ms
+     * Power off VCC
+     *
+     */
+    return;
 }
 
 
@@ -194,6 +254,7 @@ void i2c_idle(void)
     //While I2C Bus is active
     //while (I2CCONbits.SEN || I2CCONbits.PEN || I2CCONbits.RCEN ||
     //        I2CCONbits.RSEN || I2CCONbits.ACKEN || I2CSTATbits.TRSTAT || t--);
+    while(SEN(I2C1CON) || PEN(I2C1CON) || RCEN(I2C1CON) || RSEN(I2C1CON) || ACKEN(I2C1CON) || TRSTAT(I2C1CON) || t--);
     
     return;
 }
@@ -203,126 +264,141 @@ uint8_t i2c_start(void)
 {
     i2c_idle();
     
-    /*// Enable the Start condition
-    I2CCONbits.SEN = 1;
+    // Enable the Start condition    
+    I2C1CONSET = 1 << SENSHFT;    
 
     // Check for collisions
-    if (I2CSTATbits.BCL) 
+    if (BCL(I2C1STAT)) 
     {
         return (FALSE);
     } 
     else 
     {
-        I2CIdle();
+        i2c_idle();
         return (TRUE);
-    }*/
+    }
     return;
 }
 
 
 void i2c_stop(void)
 {
+    uint8_t x = 0;
+    
+    // wait for module idle
     i2c_idle();
     
-    /*// wait for module idle
-    I2CIdle();
-    
 	//initiate stop bit
-    I2CCONbits.PEN = 1;
+    I2C1CONSET = (1 << PENSHFT);
     
     //wait for hardware clear of stop bit
-    while (I2CCONbits.PEN) 
+    while (PEN(I2C1CON)) 
     {
         if (x++ > 50) 
             break;
     }
     
-    I2CCONbits.RCEN = 0;
-    I2CSTATbits.IWCOL = 0;
-    I2CSTATbits.BCL = 0;*/
+    I2C1CONSET = (1 << RCENSHFT);
+    I2C1STATSET = (1 << IWCOLSHFT);
+    I2C1STATSET = (1 << BCLSHFT);
+    
     return;
 }
 
 
 void i2c_rx(unsigned short chipAddress, unsigned short int address, unsigned char * buffer, int numBytesToRead)
 {
-    /*    int i;
+    uint8_t i;
 	// 7 Bit addresses only
     char icAddr = (char) chipAddress & 0x00FF;
 
-    I2CStart();
+    i2c_start();
     
-    I2CTRN = (icAddr << 1) | WRITE_OP;         // Address of EEPROM - Write      
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = (icAddr << 1);// | WRITE_OP;         // Address of EEPROM - Write      
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
     
-    I2CTRN = address >> 8;;
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = address >> 8;;
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
     
-    I2CTRN = address & 0x00FF;
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    I2C1TRN = address & 0x00FF;
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
     
-    I2CStart();
+    i2c_start();
     
-    I2CTRN = (icAddr << 1) | READ_OP;
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();	// Might not need
+    I2C1TRN = (icAddr << 1);// | READ_OP;
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();	// Might not need
     
-    for (i=0; i< numBytesToRead; i++)
+    for(i=0; i< numBytesToRead; i++)
     {
-        I2CIdle();
+        i2c_idle();
 
-        I2CCONbits.RCEN = 1; // enable master read
-        while (I2CCONbits.RCEN); // wait for byte to be received !(I2CSTATbits.RBF)
-        I2CIdle();
+        I2C1CONSET = (1 << RCENSHFT); // enable master read
+        while (RCEN(I2C1CON)); // wait for byte to be received !(I2CSTATbits.RBF)
+        i2c_idle();
 
-        I2CSTATbits.I2COV = 0;
-        I2CIdle();
+        I2C1STATSET = (1 << I2COVSHFT);
+        i2c_idle();
         
         buffer[i] = I2C1RCV;
         
-        if (i+1 == numBytesToRead)
+        if(i+1 == numBytesToRead)
         {
-            I2CCONbits.ACKDT = 1; // send nack on last read
-            I2CCONbits.ACKEN = 1;            
-            I2CStop();
+            I2C1CONSET = (1 << ACKDTSHFT); // send nack on last read
+            I2C1CONSET = (1 << ACKENSHFT);            
+            i2c_stop();
         }
         else
         {
-            I2CCONbits.ACKDT = 0; // send ack if more data to get
-            I2CCONbits.ACKEN = 1;
+            I2C1CONCLR = (1 << ACKDTSHFT); // send ack if more data to get
+            I2C1CONSET = (1 << ACKENSHFT);
         }
     }
-    return;*/
+    return;
 }
 
 
 void i2c_tx(unsigned short chipAddress,unsigned short int address, unsigned char * dataToWrite, int numBytesToWrite)
 {
-    /*int i;
+    uint8_t i;
     
     char icAddr = (char) chipAddress & 0x00FF;    
 
     // Set the start Bit
-    I2CStart();
+    i2c_start();
     
-    I2CTRN = (icAddr << 1) | WRITE_OP;         // Address of EEPROM - Write      
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = (icAddr << 1);// | WRITE_OP;         // Address of EEPROM - Write      
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
     
-    I2CTRN = address >> 8;
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = address >> 8;
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
     
-    I2CTRN = address & 0x00FF;
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
+    I2C1TRN = address & 0x00FF;
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
     
-    for (i=0; i<numBytesToWrite; i++)
+    for(i=0; i<numBytesToWrite; i++)
     {
-        I2CIdle();
-        I2CTRN = dataToWrite[i];
+        i2c_idle();
+        I2C1TRN = dataToWrite[i];
     }
         
-    I2CStop();*/
+    i2c_stop();
+}
+
+
+
+
+void delay(void) {
+    
+    int i;
+    
+    for(i = 0;i < (TIMER_LIMIT);i++) {
+        __asm__("NOP");
+    }
+    
+    return;
 }

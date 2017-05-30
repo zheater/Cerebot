@@ -24,6 +24,7 @@
       <itemPath>MTRControl.c</itemPath>
       <itemPath>Bluetooth.c</itemPath>
       <itemPath>IOConfig.c</itemPath>
+      <itemPath>OLEDrgb.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

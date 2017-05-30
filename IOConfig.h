@@ -11,6 +11,7 @@
 #include "SysConfig.h"
 
 
+
 /****************************************************
  *GPIO Config
  ****************************************************/
@@ -48,12 +49,16 @@ int keypad(void);
  *
  *  ON    -  SIDL IREN RTSMD  -  <- UEN -> WAKE LPBACK ABAUD RXINV BRGH <- PDSEL -> STSEL
  * [15] [14] [13] [12] [11] [10] [ 9] [ 8] [ 7]  [ 6]  [ 5]  [ 4]  [ 3]  [ 2] [ 1]  [ 0]
- *   0    0    0    0    1    0    0    0    0    1    0    0    0    0    0    0		--> 0x0800
+ *   0    0    0    0    0    0    0    0    0     0    0    0    0    0    0    0		--> 0x0000
  *
  */
-#define U1_MODE                 0x00000800
+#define U1_MODE                 0x00000000
 #define UARTON                  (1 << 15)
 #define UARTOFF                 (1 << 15)
+#define TXEN                    (1 << 10)
+#define TXDIS                   (1 << 10)
+#define RXEN                    (1 << 12)
+#define RXDIS                   (1 << 10)
 
 
 /* UART1 Status and Control Register
@@ -63,7 +68,7 @@ int keypad(void);
  * 
  *   -    -    -    -    -    -    -  ADM_EN  <--------------- ADDR --------------->    
  * [31] [30] [29] [28] [27] [26] [25]  [24]  [23] [22] [21] [20] [19] [18] [17] [16]
- *   0    0    0    0    0    0    0    0      0    0    0    0    0    0    0    0       --> 0x0000
+ *   0    0    0    0    0    0    0     1     0    1    0    0    1    0    0    0       --> 0x0148
  *
  * UTXISEL: TX Interrupt Mode Selection Bits -- 11 = Reserved; 10 = Interrupt is generated when the transmit buffer becomes empty; 01 = Interrupt is generated when all characters have been transmitted; 00 = Interrupt is generated when the transmit buffer contains at least one empty space
  * UTXINV: Transmit Polarity Inversion Bit -- 1 = UxTX idle state is '0'; 0 = UxTX idle state is '1'
@@ -82,10 +87,10 @@ int keypad(void);
  *
  * <- UTXISEL -> UTXINV URXEN UTXBRK UTXEN UTXBF TRMT <- UTXISEL -> ADDEN RIDLE PERR FERR OERR URXDA
  *  [15]  [14]    [13]   [12]  [11]   [10] [ 9]  [ 8]  [ 7]  [ 6]    [ 5]  [ 4] [ 3] [ 2] [ 1]  [ 0]
- *    0     0       0      1     0      0    0     0     0     1       0     0    0    0    0     0		--> 0x1040
+ *    0     0       0      0     0      0    0     0     0     0       1     0    0    0    0     0		--> 0x0020
  *
  */
-#define U1_STA                  0x00001040
+#define U1_STA                  0x01480020
 #define U1_UTXBF                ((U1STA & 0x200) >> 9)
 #define U1_TRMT                 ((U1STA & 0x100) >> 8)
 
@@ -111,11 +116,12 @@ int keypad(void);
 
 void uart_init(void);
 void uart1_enable(void);
+void uart1_disable(void);
 void uart1_putc(unsigned char c);
 void uart1_puts(unsigned char *s);
 void uart1_rx(void);
 
-//Using PORTE
+//Using PORTE for Bluetooth
 #define RTS_PTE         0
 #define RXD_PTE         1
 #define TXD_PTE         2
@@ -142,13 +148,14 @@ void uart1_rx(void);
  * 
  *FRMEN FRMSYNC FRMPOL														  SPIFE
  * [31]   [30]   [29]  [28] [27] [26] [25] [24] [23] [22] [21] [20] [19] [18]  [17] [16]
- *   1      0      1     0    0    0    0    0    0    0    0    0    0    0     1    0		--> A002
+ *   1      1      1     0    0    0    0    0    0    0    0    0    0    0     1    0		--> E002
  *
- *  ON       SIDL DISSDO    MODE    SMP  CKE SSEN  CKP MSTEN
- * [15] [14] [13]  [12]  [11] [10] [ 9] [ 8] [ 7] [ 6] [ 5]  [ 4] [ 3] [ 2] [ 1] [ 0]
- *   1    0    1     1     1    0    0    0    0    0    1     0    0    0    0    0		--> B820
+ *  ON       SIDL DISSDO MODE32 MODE16  SMP  CKE SSEN  CKP MSTEN
+ * [15] [14] [13]  [12]   [11]   [10]  [ 9] [ 8] [ 7] [ 6] [ 5]  [ 4] [ 3] [ 2] [ 1] [ 0]
+ *   0    0    1     1      0      0     0    0    0    0    1     0    0    0    0    0		--> 3820
  */
-#define SPI_1_CON 0xA002B820
+#define SPI_1_CON       0xE0023020
+#define SPION           15
 
 /*SPI1 Baud Rate Register
  *
@@ -159,8 +166,19 @@ void uart1_rx(void);
  * [15] [14] [13] [12] [11] [10] [ 9] [ 8] [ 7] [ 6] [ 5] [ 4] [ 3] [ 2] [ 1] [ 0]
  *   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0		--> 0000
  */
-#define SPI_1_BRG 0xA002B820
+#define SPI_1_BRG       0x00000000
 
+//Status register macros
+#define SPIBUSYSHFT     11  //SPI busy bit
+#define SPIBUSY(x)      ((x & 0x00000800) >> SPIBUSYSHFT)
+#define SREMPTYSHFT     7   //Shift register empty
+#define SREMPTY(x)      ((x & 0x00000080) >> SREMPTYSHFT)
+#define TBEMPTYSHFT     3   //Tx buffer empty
+#define TBEMTPY(x)      ((x & 0x00000008) >> TBEMPTYSHFT)
+#define TBFULLSHFT      1   //Tx buffer full
+#define TBFULL(x)       ((x & 0x00000002) >> TBFULLSHFT)
+#define RBFULLSHFT      0   //Rx buffer full
+#define RBFULL(x)       ((x & 0x00000001) >> RBFULLSHFT)
 
 
 
@@ -189,6 +207,8 @@ void uart1_rx(void);
 
 
 void spi_init();
+void oled_poweron();
+void oled_powerdown();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -366,7 +386,21 @@ void spi_init();
     *  ON       SIDL SCLREL STRICT A10M DISSLW SMEN GCEN STREN ACKDT ACKEN RCEN  PEN RSEN  SEN
     * [15] [14] [13]  [12]   [11]  [10]  [ 9]  [ 8] [ 7]  [ 6]  [ 5]  [ 4] [ 3] [ 2] [ 1] [ 0]
     * 
-    */ 
+    */
+
+#define SENSHFT         0
+#define SEN(x)          ((x & 0x00000001) >> SENSHFT)
+#define RSENSHFT        1
+#define RSEN(x)         ((x & 0x00000002) >> RSENSHFT)
+#define PENSHFT         2
+#define PEN(x)          ((x & 0x00000004) >> PENSHFT)
+#define RCENSHFT        3
+#define RCEN(x)         ((x & 0x00000008) >> RCENSHFT)
+#define ACKENSHFT       4
+#define ACKEN(x)        ((x & 0x00000010) >> ACKENSHFT)
+#define ACKDTSHFT       5
+#define ACKDT(x)        ((x & 0x00000020) >> ACKDTSHFT)
+
 
 
    /*I2C1 Status Register
@@ -393,6 +427,14 @@ void spi_init();
     *   [15]   [14]   [13]  [12] [11] [10]  [ 9]   [ 8]  [ 7]  [ 6] [ 5] [ 4] [ 3] [ 2] [ 1] [ 0]
     * 
     */
+#define TRSTATSHFT          14
+#define TRSTAT(x)           ((x & 0x00004000) >> TRSTATSHFT)
+#define BCLSHFT             10
+#define BCL(x)              ((x & 0x00000400) >> BCLSHFT)
+#define IWCOLSHFT           7
+#define IWCOL(x)            ((x & 0x00000080) >> IWCOLSHFT)
+#define I2COVSHFT           6
+#define I2COV(x)            ((x & 0x00000040) >> I2COVSHFT)
 
 
    /*I2C1 Slave Address Register
@@ -467,3 +509,8 @@ uint8_t i2c_start(void);
 void i2c_stop(void);
 void i2c_rx(unsigned short chipAddress, unsigned short int address, unsigned char * buffer, int numBytesToRead);
 void i2c_tx(unsigned short chipAddress,unsigned short int address, unsigned char * dataToWrite, int numBytesToWrite);
+
+
+
+
+void delay(void);

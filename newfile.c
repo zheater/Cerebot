@@ -9,8 +9,7 @@
 #include "IOConfig.h"
 
 /* TODOs:
- * Fix up SPI config stuff - make consistent with I2C and GPIO
- * Removed all the mask stuff. Move descriptions to bit assignment block
+ * FIX SPI STUFF - according to the pinout I have to rewire the chip... SCK1 is mapped to VCCEN, no the data channel
  * 
  * HIGH PRIORITY
  * Timer and prescaler behavior doesn't make much sense to me...
@@ -22,10 +21,11 @@
 #define TIMER_LIMIT     6000
 
 void delay(void);
-//void pmodTempAndHumnity (unsigned char *readBuffer, int readSize ); //FROM LEE
+void pmodTempAndHumnity (unsigned char *readBuffer, int readSize );
 
 int main(void) {   
     volatile int tmr = 0;
+    unsigned char uartChar = 'A';
     int i = 0;
     int j;
     gpio_init();
@@ -33,16 +33,20 @@ int main(void) {
     interrupt_setup();
     mtr_init();
     pwm_config();
-    //uart_init();
+    uart_init();
     
     LED_OFF(LED1);
     LED_OFF(LED2);
     LED_OFF(LED3);
     LED_OFF(LED4);
     
+    uart1_enable();
+    
+    
+    
         
     for(;;) {
-        
+        uart1_putc(uartChar);    //REMOVE
         //Passive LED pattern - because it's neat!
         delay();
         
@@ -111,76 +115,76 @@ void delay(void) {
 }
 
 
-//FROM LEE
-/*void pmodTempAndHumnity (unsigned char *readBuffer, int readSize )
+
+void pmodTempAndHumnity (unsigned char *readBuffer, int readSize )
 { 
     int i;
-    I2CStart();
+    i2c_start();
     
 #if 1
     // Set Configuration Register First
-    I2CTRN = 0x80;  // Hard coded address (0x40<<1) for this chip  
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = 0x80;  // Hard coded address (0x40<<1) for this chip  
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
     
-    I2CTRN = 2; // Hard coded address
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();        
+    I2C1TRN = 2; // Hard coded address
+    while (TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();        
     
     // write config = 0x1000
-    I2CTRN = 0x10;
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = 0x10;
+    while (TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
 
-    I2CTRN = 0x00;
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = 0x00;
+    while (TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
 #endif
     
     // Now read the data.
-    I2CTRN = 0x80;  // Hard coded address (0x40<<1) for this chip  
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = 0x80;  // Hard coded address (0x40<<1) for this chip  
+    while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
     
-    I2CTRN = 0; // Hard coded address
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();        
+    I2C1TRN = 0; // Hard coded address
+    while (TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();        
 
-    delayxMS(25); // requires hard delay.
+    delay(); // requires hard delay.
     
     // Added this start / restart to try to fix repeated byte issue.
-    I2C1CONbits.RSEN = 1;
-    I2CIdle();
+    I2C1CONSET = (1 << RSENSHFT);
+    i2c_idle();
     
-    I2CTRN = 0x81; // Hard coded address (0x40<<1) | 0x01) with read bit on.
-    while (I2CSTATbits.TRSTAT); // wait until write cycle is complete
-    I2CIdle();
+    I2C1TRN = 0x81; // Hard coded address (0x40<<1) | 0x01) with read bit on.
+    while (TRSTAT(I2C1STAT)); // wait until write cycle is complete
+    i2c_idle();
      
  
     for (i=0; i< readSize; i++)
     {
-        I2CCONbits.RCEN = 1; // enable master read
-        while (I2CCONbits.RCEN); // wait for byte to be received !(I2CSTATbits.RBF)
-        I2CIdle();
+        I2C1CONSET = (1 << RCENSHFT); // enable master read
+        while (RCEN(I2C1CON)); // wait for byte to be received
+        i2c_idle();
 
-        I2CSTATbits.I2COV = 0;
-        I2CIdle();
+        I2C1STATCLR = (1 << I2COVSHFT);
+        i2c_idle();
         
         readBuffer[i] = I2C1RCV;
         
         if (i+1 == readSize)
         {
-            I2CCONbits.ACKDT = 1; // send nack on last read
-            I2CCONbits.ACKEN = 1;            
-            I2CStop();
+            I2C1CONSET = (1 << ACKDTSHFT); // send nack on last read
+            I2C1CONSET = (1 << ACKENSHFT);            
+            i2c_stop();
         }
         else
         {
-            I2CCONbits.ACKDT = 0; // send ack if more data to get
-            I2CCONbits.ACKEN = 1;
+            I2C1CONCLR = (1 << ACKDTSHFT); // send ack if more data to get
+            I2C1CONSET = (1 << ACKENSHFT);
         }
-        I2CIdle();
+        i2c_idle();
 
     }
     return;
-}*/
+}
