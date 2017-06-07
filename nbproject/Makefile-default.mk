@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=newfile.c TimerConfig.c Schedule.c MTRControl.c Bluetooth.c IOConfig.c
+SOURCEFILES_QUOTED_IF_SPACED=newfile.c TimerConfig.c Schedule.c MTRControl.c Bluetooth.c IOConfig.c Util.c ADCConfig.c USSensor.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/newfile.o ${OBJECTDIR}/TimerConfig.o ${OBJECTDIR}/Schedule.o ${OBJECTDIR}/MTRControl.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/IOConfig.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/newfile.o.d ${OBJECTDIR}/TimerConfig.o.d ${OBJECTDIR}/Schedule.o.d ${OBJECTDIR}/MTRControl.o.d ${OBJECTDIR}/Bluetooth.o.d ${OBJECTDIR}/IOConfig.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/newfile.o ${OBJECTDIR}/TimerConfig.o ${OBJECTDIR}/Schedule.o ${OBJECTDIR}/MTRControl.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/IOConfig.o ${OBJECTDIR}/Util.o ${OBJECTDIR}/ADCConfig.o ${OBJECTDIR}/USSensor.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/newfile.o.d ${OBJECTDIR}/TimerConfig.o.d ${OBJECTDIR}/Schedule.o.d ${OBJECTDIR}/MTRControl.o.d ${OBJECTDIR}/Bluetooth.o.d ${OBJECTDIR}/IOConfig.o.d ${OBJECTDIR}/Util.o.d ${OBJECTDIR}/ADCConfig.o.d ${OBJECTDIR}/USSensor.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/newfile.o ${OBJECTDIR}/TimerConfig.o ${OBJECTDIR}/Schedule.o ${OBJECTDIR}/MTRControl.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/IOConfig.o
+OBJECTFILES=${OBJECTDIR}/newfile.o ${OBJECTDIR}/TimerConfig.o ${OBJECTDIR}/Schedule.o ${OBJECTDIR}/MTRControl.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/IOConfig.o ${OBJECTDIR}/Util.o ${OBJECTDIR}/ADCConfig.o ${OBJECTDIR}/USSensor.o
 
 # Source Files
-SOURCEFILES=newfile.c TimerConfig.c Schedule.c MTRControl.c Bluetooth.c IOConfig.c
+SOURCEFILES=newfile.c TimerConfig.c Schedule.c MTRControl.c Bluetooth.c IOConfig.c Util.c ADCConfig.c USSensor.c
 
 
 CFLAGS=
@@ -142,6 +142,24 @@ ${OBJECTDIR}/IOConfig.o: IOConfig.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/IOConfig.o 
 	@${FIXDEPS} "${OBJECTDIR}/IOConfig.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/IOConfig.o.d" -o ${OBJECTDIR}/IOConfig.o IOConfig.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/Util.o: Util.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Util.o.d 
+	@${RM} ${OBJECTDIR}/Util.o 
+	@${FIXDEPS} "${OBJECTDIR}/Util.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Util.o.d" -o ${OBJECTDIR}/Util.o Util.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/ADCConfig.o: ADCConfig.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ADCConfig.o.d 
+	@${RM} ${OBJECTDIR}/ADCConfig.o 
+	@${FIXDEPS} "${OBJECTDIR}/ADCConfig.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ADCConfig.o.d" -o ${OBJECTDIR}/ADCConfig.o ADCConfig.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/USSensor.o: USSensor.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/USSensor.o.d 
+	@${RM} ${OBJECTDIR}/USSensor.o 
+	@${FIXDEPS} "${OBJECTDIR}/USSensor.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/USSensor.o.d" -o ${OBJECTDIR}/USSensor.o USSensor.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/newfile.o: newfile.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -178,6 +196,24 @@ ${OBJECTDIR}/IOConfig.o: IOConfig.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/IOConfig.o.d 
 	@${RM} ${OBJECTDIR}/IOConfig.o 
 	@${FIXDEPS} "${OBJECTDIR}/IOConfig.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/IOConfig.o.d" -o ${OBJECTDIR}/IOConfig.o IOConfig.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/Util.o: Util.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Util.o.d 
+	@${RM} ${OBJECTDIR}/Util.o 
+	@${FIXDEPS} "${OBJECTDIR}/Util.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Util.o.d" -o ${OBJECTDIR}/Util.o Util.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/ADCConfig.o: ADCConfig.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ADCConfig.o.d 
+	@${RM} ${OBJECTDIR}/ADCConfig.o 
+	@${FIXDEPS} "${OBJECTDIR}/ADCConfig.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ADCConfig.o.d" -o ${OBJECTDIR}/ADCConfig.o ADCConfig.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/USSensor.o: USSensor.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/USSensor.o.d 
+	@${RM} ${OBJECTDIR}/USSensor.o 
+	@${FIXDEPS} "${OBJECTDIR}/USSensor.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/USSensor.o.d" -o ${OBJECTDIR}/USSensor.o USSensor.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

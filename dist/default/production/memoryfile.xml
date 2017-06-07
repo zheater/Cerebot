@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/debug/Cerebot-master.debug.elf">                 
+  <executable name="dist/default/production/Cerebot-master.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>531968</length>                 
-      <used>10320</used>                     
-      <free>521648</free>                     
+      <used>10036</used>                     
+      <free>521932</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
       <length>32768</length>                 
-      <used>564</used>                     
-      <free>32204</free>                     
+      <used>44</used>                     
+      <free>32724</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

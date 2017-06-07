@@ -28,7 +28,7 @@
  * [15] [14] [13] [12] [11] [10] [ 9] [ 8]  [ 7]  [ 6] [ 5] [ 4] [ 3] [ 2] [ 1] [ 0]
  *   0    0    1    0    0    0    0    0     0     0    0    0    0    0    0    0		--> 0x2000
  */
-#define T_5_CON				0x00002000	//Note: Timer is turned off during initialization
+#define _T5CON				0x00002000	//Note: Timer is turned off during initialization
 
 
 
@@ -45,7 +45,7 @@
  *   0    0    0    1    1    1    1    1    0    1    0    0    0    0    0    0		--> 0x1F40
  *
  */
-#define PR_5				0x00000FFF
+#define _PR5				0x0000008F
 
 
 

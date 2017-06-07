@@ -10,6 +10,10 @@
       <itemPath>Bluetooth.h</itemPath>
       <itemPath>MTRControl.h</itemPath>
       <itemPath>Schedule.h</itemPath>
+      <itemPath>Util.h</itemPath>
+      <itemPath>OLEDrgb.h</itemPath>
+      <itemPath>ADCConfig.h</itemPath>
+      <itemPath>USSensor.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -24,7 +28,9 @@
       <itemPath>MTRControl.c</itemPath>
       <itemPath>Bluetooth.c</itemPath>
       <itemPath>IOConfig.c</itemPath>
-      <itemPath>OLEDrgb.h</itemPath>
+      <itemPath>Util.c</itemPath>
+      <itemPath>ADCConfig.c</itemPath>
+      <itemPath>USSensor.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

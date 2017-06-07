@@ -1,7 +1,7 @@
-build/default/debug/newfile.o:  \
-newfile.c  \
-SysConfig.h  \
+build/default/production/Util.o:  \
+Util.c  \
 Util.h  \
+SysConfig.h  \
 IOConfig.h  \
  ADCConfig.h  \
 Schedule.h  \

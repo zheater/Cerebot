@@ -3,6 +3,8 @@
 
 
 #define TIMER_LIMIT     12000
+#define WRITE_OP        1
+#define READ_OP         0
 
 
 
@@ -23,79 +25,13 @@ void gpio_init(void)
     //Using Port F for UART to LCD -- U1TX/RF8
     TRISF = 0x0;
     
+    //Using PORTG pins 7-9 for US sensor, 6 for temp sensor
+    TRISG = 0x03C0;
+    
     //Using Port D for OLED SPI
     //TRISD = 0x0;  -- DELETE
     
     return;
-}
-
-int keypad(void)
-{
-    uint8_t hexValue = '\0';
-    uint32_t portE;
-    
-    portE = (PORTE & 0x00FF);
-
-    //Active Low
-    switch(portE) {
-        case 0xE7:
-            hexValue = 0x0;
-            break;
-        case 0x77:
-            hexValue = 0x1;
-            break;
-        case 0x7B:
-            hexValue = 0x2;
-            break;
-        case 0x7D:
-            hexValue = 0x3;
-            break;
-        case 0xB7:
-            hexValue = 0x4;
-            break;
-        case 0xBB:
-            hexValue = 0x5;
-            break;
-        case 0xBD:
-            hexValue = 0x6;
-            break;
-        case 0xD7:
-            hexValue = 0x7;
-            break;
-        case 0xDB:
-            hexValue = 0x8;
-            break;
-        case 0xDD:
-            hexValue = 0x9;
-            break;
-        case 0x7E:
-            hexValue = 0xA;
-            break;
-        case 0xBE:
-            hexValue = 0xB;
-            break;
-        case 0xDE:
-            hexValue = 0xC;
-            break;
-        case 0xEE:
-            hexValue = 0xD;
-            break;
-        case 0xED:
-            hexValue = 0xE;
-            break;
-        case 0xEB:
-            hexValue = 0xF;
-            break;
-        default:
-            hexValue = '\0';    //Fix this
-    };
-    
-    if(hexValue != '\0') {
-        LATB = (hexValue << 10);   //Display hex value on LEDs
-    }
-    
-    
-    return hexValue;
 }
 
 
@@ -109,9 +45,9 @@ int keypad(void)
  ****************************************************/
 void uart_init(void)
 {
-    U1MODE = U1_MODE;
-    U1STA = U1_STA;
-    U1BRG = U1_BRG;
+    U1MODE = _U1MODE;
+    U1STA = _U1STA;
+    U1BRG = _U1BRG;
         
     return;
 }
@@ -169,15 +105,15 @@ void uart1_rx(void)
  ****************************************************/
 void spi_init()
 {
-    SPI1CON = SPI_1_CON;
-    SPI1BRG = SPI_1_BRG;
+    SPI1CON = _SPI1CON;
+    SPI1BRG = _SPI1BRG;
 
 	return;
 }
 
 void oled_poweron()
 {
-    /* Per OLED reference material
+    /* Per OLED reference material:
      * 
      * Apply power to VCC
      * Send Display Off command
@@ -239,9 +175,9 @@ void oled_powerdown()
 void i2c_init(void)
 {   
     I2C1CON = 0x0;
-    I2C1BRG = I2C1_BRG;
+    I2C1BRG = _I2C1BRG;
     I2C1STAT = 0x0;
-    I2C1CON = I2C1_CON;
+    I2C1CON = _I2C1CON;
     
     return;
 }
@@ -253,7 +189,7 @@ void i2c_idle(void)
     
     //While I2C Bus is active
     //while (I2CCONbits.SEN || I2CCONbits.PEN || I2CCONbits.RCEN ||
-    //        I2CCONbits.RSEN || I2CCONbits.ACKEN || I2CSTATbits.TRSTAT || t--);
+    //        I2CCONbits.RSEN || I2CCONbits.ACKEN || I2CSTATbits.TRSTAT || t--);REMOVE
     while(SEN(I2C1CON) || PEN(I2C1CON) || RCEN(I2C1CON) || RSEN(I2C1CON) || ACKEN(I2C1CON) || TRSTAT(I2C1CON) || t--);
     
     return;
@@ -314,7 +250,7 @@ void i2c_rx(unsigned short chipAddress, unsigned short int address, unsigned cha
 
     i2c_start();
     
-    I2C1TRN = (icAddr << 1);// | WRITE_OP;         // Address of EEPROM - Write      
+    I2C1TRN = (icAddr << 1) | WRITE_OP;         // Address of EEPROM - Write      
     while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
     i2c_idle();
     
@@ -327,7 +263,7 @@ void i2c_rx(unsigned short chipAddress, unsigned short int address, unsigned cha
     
     i2c_start();
     
-    I2C1TRN = (icAddr << 1);// | READ_OP;
+    I2C1TRN = (icAddr << 1) | READ_OP;
     while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
     i2c_idle();	// Might not need
     
@@ -369,7 +305,7 @@ void i2c_tx(unsigned short chipAddress,unsigned short int address, unsigned char
     // Set the start Bit
     i2c_start();
     
-    I2C1TRN = (icAddr << 1);// | WRITE_OP;         // Address of EEPROM - Write      
+    I2C1TRN = (icAddr << 1) | WRITE_OP;         // Address of EEPROM - Write      
     while(TRSTAT(I2C1STAT)); // wait until write cycle is complete
     i2c_idle();
     
@@ -387,18 +323,4 @@ void i2c_tx(unsigned short chipAddress,unsigned short int address, unsigned char
     }
         
     i2c_stop();
-}
-
-
-
-
-void delay(void) {
-    
-    int i;
-    
-    for(i = 0;i < (TIMER_LIMIT);i++) {
-        __asm__("NOP");
-    }
-    
-    return;
 }

@@ -1,8 +1,11 @@
 build/default/production/newfile.o:  \
 newfile.c  \
-TimerConfig.h  \
 SysConfig.h  \
- Schedule.h  \
+Util.h  \
+ IOConfig.h  \
+ADCConfig.h  \
+Schedule.h  \
+TimerConfig.h  \
 MTRControl.h  \
 Bluetooth.h  \
-IOConfig.h 
+ USSensor.h 

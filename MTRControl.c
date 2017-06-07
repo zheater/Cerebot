@@ -1,9 +1,5 @@
 #include "MTRControl.h"
 
-//Motor mtrLeft;
-//Motor mtrRight;
-//bool pwmClock;
-//uint8_t pwmPct;
 
 void mtr_init(void) {
     mtrLeft.mtrID = MTRLEFT;
@@ -13,10 +9,7 @@ void mtr_init(void) {
     mtrRight.mtrID = MTRRIGHT;
     mtrRight.mtrEnable = MTROFF;
     mtrRight.dutyCycle = 0;
-    
-    enable_mtr(&mtrRight);
-    //pwm_ds_adjust(&mtrRight,75);
-    
+        
     return;
 }
 
@@ -58,11 +51,11 @@ void pwm_main(void) {
         mtrRight.mtrOn = 0;
     }
     
-    /*if(pwmClock) {
+    if(pwmClock) {
         LATASET = (1 << 6);
     } else {
         LATACLR = (1 << 6);    
-    }*/
+    }
     
     if(mtrLeft.mtrOn) {
         LATASET = (1 << 2);
@@ -81,9 +74,18 @@ void pwm_main(void) {
 
 void pwm_ds_adjust(Motor *motor, uint8_t newDutyCycle) {
     if(newDutyCycle >= 0 && newDutyCycle <=100) {
-        motor->dutyCycle = newDutyCycle;
+        motor->rqstDutyCycle = newDutyCycle;
     } else {
         //TODO: Throw exception
+    }
+    
+    if((motor->dutyCycle - motor->rqstDutyCycle) < MAXDSSTEP || (motor->rqstDutyCycle - motor->dutyCycle) < MAXDSSTEP)
+    {
+        motor->dutyCycle = motor->rqstDutyCycle;
+    } else if (motor->dutyCycle > motor->rqstDutyCycle) {
+        motor->dutyCycle = motor->dutyCycle - MAXDSSTEP;
+    } else if (motor->dutyCycle < motor->rqstDutyCycle) {
+        motor->dutyCycle = motor->dutyCycle + MAXDSSTEP;
     }
     return;
 }

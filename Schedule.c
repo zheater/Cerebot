@@ -1,5 +1,6 @@
 #include "Schedule.h"
 #include "MTRControl.h"
+#include "Util.h"
 
 
 void interrupt_setup(void)
@@ -12,7 +13,7 @@ void interrupt_setup(void)
      **************************************************************************/
     __asm__ volatile("di");     //Disable all interrupts
     
-    INTCON = INT_CON;       //Set interrupt control register
+    INTCON = _INTCON;       //Set interrupt control register
     
     //Using timer 5
     T5CON = 0x0;            //Disable Timer 5
@@ -23,7 +24,7 @@ void interrupt_setup(void)
     IFS0 &= 0xFFEFFFFF;   // Clear Timer Int Flag 
     IEC0 |= 0x00100000;   // Enable Interrupts for Timer
     
-    T5CON = T_5_CON;
+    T5CON = _T5CON;
     T5CON |= TMR_START;      // Restart the Timer.
     
     
@@ -32,20 +33,10 @@ void interrupt_setup(void)
 
 void motor_service(void)
 {
-    static int init;
-    static int count;
     static int b1PrevVal;
     static int b2PrevVal;
     int button1;
     int button2;
-    uint8_t hexValue;
-    
-    if(init == 1) {
-        count++;
-    } else {
-        init = 1;
-        count = 1;
-    }
     
     
     pwm_main();
@@ -56,10 +47,12 @@ void motor_service(void)
     
     if(button1 == 1 & b1PrevVal == 0) {
         pwm_ds_adjust(&mtrLeft, (mtrLeft.dutyCycle + 10));
+        numToLED(mtrLeft.dutyCycle / 10);
     }
     
     if(button2 == 1 & b2PrevVal == 0) {
         pwm_ds_adjust(&mtrLeft, (mtrLeft.dutyCycle - 10));
+        numToLED(mtrLeft.dutyCycle / 10);
     }
     
     b1PrevVal = button1;
@@ -74,16 +67,10 @@ void __attribute__((interrupt(single),vector(0),nomips16)) isr_handler(void)
     __asm__ volatile("di");     //Disable all interrupts
     
     
-    if(((IFS0 & TMR5INTMASK) >> TMR5INTFLAG) == 1) {
+    if(((IFS0 & TMR5INTMASK) >> TMR5INTFLAG) == 1) {                
         motor_service();
         IFS0CLR = (1 << TMR5INTFLAG);    //Clear interrupt flag
     }
-    
-    
-    
-    
-    
-    
     
     __asm__ volatile("ei");     //Enable all interrupts  
 }

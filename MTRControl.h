@@ -15,6 +15,7 @@
 #define MTROFF          0
 #define MTRON           1
 #define PWMMAX          100
+#define MAXDSSTEP       1
 
 
 
@@ -23,6 +24,7 @@ typedef struct {
     bool mtrEnable;
     bool mtrOn;
     uint8_t dutyCycle;
+    uint8_t rqstDutyCycle;
 } Motor;
 
 Motor mtrLeft;

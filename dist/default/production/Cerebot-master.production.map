@@ -112,38 +112,37 @@ Archive member included because of file (symbol)
 Allocating common symbols
 Common symbol       size              file
 
-mtrRight            0x5               build/default/debug/newfile.o
-usRight             0x4               build/default/debug/newfile.o
-pwmClock            0x1               build/default/debug/newfile.o
-usCenter            0x4               build/default/debug/newfile.o
-bt                  0x8               build/default/debug/newfile.o
-usLeft              0x4               build/default/debug/newfile.o
-pwmPct              0x1               build/default/debug/newfile.o
-mtrLeft             0x5               build/default/debug/newfile.o
+mtrRight            0x4               build/default/production/newfile.o
+usRight             0x4               build/default/production/newfile.o
+pwmClock            0x1               build/default/production/newfile.o
+usCenter            0x4               build/default/production/newfile.o
+bt                  0x8               build/default/production/newfile.o
+usLeft              0x4               build/default/production/newfile.o
+pwmPct              0x1               build/default/production/newfile.o
+mtrLeft             0x4               build/default/production/newfile.o
 
 Microchip PIC32 Memory-Usage Report
 
 kseg0 Program-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-.text                   0x9d000000         0x15a0        5536  App's exec code 
-.text                   0x9d0015a0          0x74c        1868  App's exec code 
-.text                   0x9d001cec          0x318         792  App's exec code 
-.text.general_exception 0x9d002004           0xdc         220   
-.text                   0x9d0020e0          0x110         272  App's exec code 
-.text                   0x9d0021f0           0xe0         224  App's exec code 
-.text.main_entry        0x9d0022d0           0x54          84   
-.text._bootstrap_except 0x9d002324           0x48          72   
-.text._general_exceptio 0x9d00236c           0x48          72   
-.vector_default         0x9d0023b4           0x48          72   
-.text                   0x9d0023fc           0x44          68  App's exec code 
-.rodata                 0x9d002440           0x1c          28  Read-only const 
-.text                   0x9d00245c           0x18          24  App's exec code 
-.dinit                  0x9d002474           0x10          16   
-.text.__exception_handl 0x9d002484            0xc          12   
-.text._on_reset         0x9d002490            0x8           8   
-.text._on_bootstrap     0x9d002498            0x8           8   
-      Total kseg0_program_mem used  :      0x24a0        9376  1.8% of 0x80000
+.text                   0x9d000000         0x1598        5528  App's exec code 
+.text                   0x9d001598          0x774        1908  App's exec code 
+.text                   0x9d001d0c          0x250         592  App's exec code 
+.text.general_exception 0x9d001f5c           0xdc         220   
+.text                   0x9d002038           0xfc         252  App's exec code 
+.text                   0x9d002134           0x68         104  App's exec code 
+.text.main_entry        0x9d00219c           0x54          84   
+.text._bootstrap_except 0x9d0021f0           0x48          72   
+.text._general_exceptio 0x9d002238           0x48          72   
+.vector_default         0x9d002280           0x48          72   
+.text                   0x9d0022c8           0x70         112  App's exec code 
+.rodata                 0x9d002338           0x1c          28  Read-only const 
+.text                   0x9d002354           0x18          24  App's exec code 
+.dinit                  0x9d00236c           0x10          16   
+.text._on_reset         0x9d00237c            0x8           8   
+.text._on_bootstrap     0x9d002384            0x8           8   
+      Total kseg0_program_mem used  :      0x238c        9100  1.7% of 0x80000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -207,44 +206,42 @@ section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
 .reset                  0xbfc00000          0x208         520  Reset handler 
 .bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
-.dbg_excpt              0xbfc00480            0x8           8   
-         Total kseg1_boot_mem used  :       0x220         544  46.6% of 0x490
+         Total kseg1_boot_mem used  :       0x218         536  45.9% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0x2850       10320  1.9% of 0x81e00
+         Total Program Memory used  :      0x2734       10036  1.9% of 0x81e00
         --------------------------------------------------------------------------
 
 
 kseg1 Data-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-.dbg_data               0xa0000000          0x200         512  Memory reserved for debugger exec 
-.sbss                   0xa0000200           0x34          52  Small uninit data 
-         Total kseg1_data_mem used  :       0x234         564  1.7% of 0x8000
+.sbss                   0xa0000000           0x2c          44  Small uninit data 
+         Total kseg1_data_mem used  :        0x2c          44  0.1% of 0x8000
         --------------------------------------------------------------------------
-            Total Data Memory used  :       0x234         564  1.7% of 0x8000
+            Total Data Memory used  :        0x2c          44  0.1% of 0x8000
         --------------------------------------------------------------------------
 
 
 Dynamic Data-Memory Reservation
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-heap                    0xa0000238           0x10          16  Reserved for heap 
-stack                   0xa0000260         0x7d90       32144  Reserved for stack 
+heap                    0xa0000030           0x10          16  Reserved for heap 
+stack                   0xa0000058         0x7f98       32664  Reserved for stack 
 
         --------------------------------------------------------------------------
 
 Discarded input sections
 
- .reginfo       0x00000000       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .reginfo       0x00000000       0x18 build/default/debug/newfile.o
- .reginfo       0x00000000       0x18 build/default/debug/TimerConfig.o
- .reginfo       0x00000000       0x18 build/default/debug/Schedule.o
- .reginfo       0x00000000       0x18 build/default/debug/MTRControl.o
- .reginfo       0x00000000       0x18 build/default/debug/Bluetooth.o
- .reginfo       0x00000000       0x18 build/default/debug/IOConfig.o
- .reginfo       0x00000000       0x18 build/default/debug/Util.o
- .reginfo       0x00000000       0x18 build/default/debug/ADCConfig.o
- .reginfo       0x00000000       0x18 build/default/debug/USSensor.o
+ .reginfo       0x00000000       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/debug-exception-return.o
+ .reginfo       0x00000000       0x18 build/default/production/newfile.o
+ .reginfo       0x00000000       0x18 build/default/production/TimerConfig.o
+ .reginfo       0x00000000       0x18 build/default/production/Schedule.o
+ .reginfo       0x00000000       0x18 build/default/production/MTRControl.o
+ .reginfo       0x00000000       0x18 build/default/production/Bluetooth.o
+ .reginfo       0x00000000       0x18 build/default/production/IOConfig.o
+ .reginfo       0x00000000       0x18 build/default/production/Util.o
+ .reginfo       0x00000000       0x18 build/default/production/ADCConfig.o
+ .reginfo       0x00000000       0x18 build/default/production/USSensor.o
  .reginfo       0x00000000       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/default_isr_vectors.o
  .discard       0x00000000       0xb8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/default_isr_vectors.o
  .reginfo       0x00000000       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/pic32_software_reset.o
@@ -322,21 +319,17 @@ configsfrs       0xbfc02ff0         0x00000010
 Linker script and memory map
 
 LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
-LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
-                0x00000001                _DEBUGGER = 0x1
-LOAD build/default/debug/newfile.o
-LOAD build/default/debug/TimerConfig.o
-LOAD build/default/debug/Schedule.o
-LOAD build/default/debug/MTRControl.o
-LOAD build/default/debug/Bluetooth.o
-LOAD build/default/debug/IOConfig.o
-LOAD build/default/debug/Util.o
-LOAD build/default/debug/ADCConfig.o
-LOAD build/default/debug/USSensor.o
+LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/debug-exception-return.o
+LOAD build/default/production/newfile.o
+LOAD build/default/production/TimerConfig.o
+LOAD build/default/production/Schedule.o
+LOAD build/default/production/MTRControl.o
+LOAD build/default/production/Bluetooth.o
+LOAD build/default/production/IOConfig.o
+LOAD build/default/production/Util.o
+LOAD build/default/production/ADCConfig.o
+LOAD build/default/production/USSensor.o
                 0x00000001                __MPLAB_BUILD = 0x1
-                0x00000001                __MPLAB_DEBUG = 0x1
-                0x00000001                __DEBUG = 0x1
-                0x00000001                __MPLAB_DEBUGGER_PIC32MXSK = 0x1
 LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/default_isr_vectors.o
 LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/pic32_software_reset.o
                 0x00000400                PROVIDE (_min_stack_size, 0x400)
@@ -383,13 +376,11 @@ END GROUP
  *(.bev_handler)
  .bev_handler   0xbfc00380       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
 
-.dbg_excpt      0xbfc00480        0x8
+.dbg_excpt      0xbfc00480        0x0
                 0xbfc00480                . = (. + DEFINED (_DEBUGGER)?0x8:0x0)
- *fill*         0xbfc00480        0x8 
 
-.dbg_code       0xbfc02000      0xff0
+.dbg_code       0xbfc02000        0x0
                 0xbfc02000                . = (. + DEFINED (_DEBUGGER)?_DBG_CODE_SIZE:0x0)
- *fill*         0xbfc02000      0xff0 
 
 .app_excpt      0x9fc01180       0x10
  *(.gen_handler)
@@ -397,10 +388,10 @@ END GROUP
 
 .vector_0       0x9fc01200       0x18
  *(.vector_0)
- .vector_0      0x9fc01200        0x8 build/default/debug/newfile.o
+ .vector_0      0x9fc01200        0x8 build/default/production/newfile.o
                 0x9fc01200                __vector_dispatch_0
- .vector_0      0x9fc01208        0x8 build/default/debug/Schedule.o
- .vector_0      0x9fc01210        0x8 build/default/debug/Util.o
+ .vector_0      0x9fc01208        0x8 build/default/production/Schedule.o
+ .vector_0      0x9fc01210        0x8 build/default/production/Util.o
                 0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_0) <= (_vector_spacing << 0x5))), function at exception vector 0 too large)
 
 .vector_1       0x9fc01220        0x8
@@ -829,87 +820,85 @@ END GROUP
  *(.gcc_except_table .gcc_except_table.*)
                 0x9fc00490                . = ALIGN (0x4)
 
-.dbg_data       0xa0000000      0x200
+.dbg_data       0xa0000000        0x0
                 0xa0000000                . = (. + DEFINED (_DEBUGGER)?0x200:0x0)
- *fill*         0xa0000000      0x200 
 
-.jcr            0xa0000200        0x0
+.jcr            0xa0000000        0x0
  *(.jcr)
-                0xa0000200                . = ALIGN (0x4)
+                0xa0000000                . = ALIGN (0x4)
 
 .eh_frame
  *(.eh_frame)
-                0xa0000200                . = ALIGN (0x4)
+                0xa0000000                . = ALIGN (0x4)
 
 .gcc_except_table
  *(.gcc_except_table .gcc_except_table.*)
-                0xa0000200                . = ALIGN (0x4)
+                0xa0000000                . = ALIGN (0x4)
 
-.persist        0xa0000200        0x0
-                0xa0000200                _persist_begin = .
+.persist        0xa0000000        0x0
+                0xa0000000                _persist_begin = .
  *(.persist .persist.*)
  *(.pbss .pbss.*)
-                0xa0000200                . = ALIGN (0x4)
-                0xa0000200                _persist_end = .
+                0xa0000000                . = ALIGN (0x4)
+                0xa0000000                _persist_end = .
 
-.data           0xa0000200        0x0
+.data           0xa0000000        0x0
  *(.gnu.linkonce.d.*)
  *(.data1)
-                0xa0000200                . = ALIGN (0x4)
-                0xa0000200                . = .
-                0xa00081f0                _gp = (ALIGN (0x10) + 0x7ff0)
+                0xa0000000                . = ALIGN (0x4)
+                0xa0000000                . = .
+                0xa0007ff0                _gp = (ALIGN (0x10) + 0x7ff0)
 
-.got            0xa0000200        0x0
+.got            0xa0000000        0x0
  *(.got.plt)
  *(.got)
-                0xa0000200                . = ALIGN (0x4)
+                0xa0000000                . = ALIGN (0x4)
 
-.sdata          0xa0000200        0x0
-                0xa0000200                _sdata_begin = .
+.sdata          0xa0000000        0x0
+                0xa0000000                _sdata_begin = .
  *(.sdata .sdata.* .gnu.linkonce.s.*)
-                0xa0000200                . = ALIGN (0x4)
-                0xa0000200                _sdata_end = .
+                0xa0000000                . = ALIGN (0x4)
+                0xa0000000                _sdata_end = .
 
 .lit8
  *(.lit8)
 
 .lit4
  *(.lit4)
-                0xa0000200                . = ALIGN (0x4)
-                0xa0000200                _data_end = .
-                0xa0000200                _bss_begin = .
+                0xa0000000                . = ALIGN (0x4)
+                0xa0000000                _data_end = .
+                0xa0000000                _bss_begin = .
 
-.sbss           0xa0000200       0x34
-                0xa0000200                _sbss_begin = .
+.sbss           0xa0000000       0x2c
+                0xa0000000                _sbss_begin = .
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0xa0000200        0x8 build/default/debug/Schedule.o
+ .sbss          0xa0000000        0x8 build/default/production/Schedule.o
  *(.scommon)
- .scommon       0xa0000208       0x29 build/default/debug/newfile.o
-                0xa0000208                mtrRight
-                0xa0000210                usRight
-                0xa0000214                pwmClock
-                0xa0000218                usCenter
-                0xa000021c                bt
-                0xa0000224                usLeft
-                0xa0000228                pwmPct
-                0xa000022c                mtrLeft
- .scommon       0xa0000231        0x0 build/default/debug/Schedule.o
- .scommon       0xa0000231        0x0 build/default/debug/MTRControl.o
- .scommon       0xa0000231        0x0 build/default/debug/Bluetooth.o
- .scommon       0xa0000231        0x0 build/default/debug/Util.o
- .scommon       0xa0000231        0x0 build/default/debug/USSensor.o
-                0xa0000231                _sbss_end = .
-                0xa0000234                . = ALIGN (0x4)
- *fill*         0xa0000231        0x3 
+ .scommon       0xa0000008       0x24 build/default/production/newfile.o
+                0xa0000008                mtrRight
+                0xa000000c                usRight
+                0xa0000010                pwmClock
+                0xa0000014                usCenter
+                0xa0000018                bt
+                0xa0000020                usLeft
+                0xa0000024                pwmPct
+                0xa0000028                mtrLeft
+ .scommon       0xa000002c        0x0 build/default/production/Schedule.o
+ .scommon       0xa000002c        0x0 build/default/production/MTRControl.o
+ .scommon       0xa000002c        0x0 build/default/production/Bluetooth.o
+ .scommon       0xa000002c        0x0 build/default/production/Util.o
+ .scommon       0xa000002c        0x0 build/default/production/USSensor.o
+                0xa000002c                _sbss_end = .
+                0xa000002c                . = ALIGN (0x4)
 
-.bss            0xa0000234        0x0
+.bss            0xa000002c        0x0
  *(.dynbss)
  *(COMMON)
-                0xa0000234                . = ALIGN ((. != 0x0)?0x4:0x1)
-                0xa0000234                . = ALIGN (0x4)
-                0xa0000234                _end = .
-                0xa0000234                _bss_end = .
+                0xa000002c                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0xa000002c                . = ALIGN (0x4)
+                0xa000002c                _end = .
+                0xa000002c                _bss_end = .
                 0x00008000                _bmxdudba_address = 0x8000
                 0x00008000                _bmxdupba_address = 0x8000
 
@@ -930,23 +919,22 @@ END GROUP
  *(.gptab.bss)
  *(.gptab.sbss)
 
-.mdebug.abi32   0xa0000234        0x0
+.mdebug.abi32   0xa000002c        0x0
  *(.mdebug.abi32)
- .mdebug.abi32  0xa0000234        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/newfile.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/TimerConfig.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/Schedule.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/MTRControl.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/Bluetooth.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/IOConfig.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/Util.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/ADCConfig.o
- .mdebug.abi32  0xa0000234        0x0 build/default/debug/USSensor.o
- .mdebug.abi32  0xa0000234        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .mdebug.abi32  0xa0000234        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .mdebug.abi32  0xa0000234        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .mdebug.abi32  0xa0000234        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .mdebug.abi32  0xa0000234        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/newfile.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/TimerConfig.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/Schedule.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/MTRControl.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/Bluetooth.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/IOConfig.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/Util.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/ADCConfig.o
+ .mdebug.abi32  0xa000002c        0x0 build/default/production/USSensor.o
+ .mdebug.abi32  0xa000002c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .mdebug.abi32  0xa000002c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .mdebug.abi32  0xa000002c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .mdebug.abi32  0xa000002c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .mdebug.abi32  0xa000002c        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
 .mdebug.abiN32
  *(.mdebug.abiN32)
@@ -989,17 +977,16 @@ END GROUP
 
 .comment        0x00000000       0x3c
  *(.comment)
- .comment       0x00000000       0x3c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
+ .comment       0x00000000       0x3c build/default/production/newfile.o
                                  0x3d (size before relaxing)
- .comment       0x00000000       0x3d build/default/debug/newfile.o
- .comment       0x00000000       0x3d build/default/debug/TimerConfig.o
- .comment       0x00000000       0x3d build/default/debug/Schedule.o
- .comment       0x00000000       0x3d build/default/debug/MTRControl.o
- .comment       0x00000000       0x3d build/default/debug/Bluetooth.o
- .comment       0x00000000       0x3d build/default/debug/IOConfig.o
- .comment       0x00000000       0x3d build/default/debug/Util.o
- .comment       0x00000000       0x3d build/default/debug/ADCConfig.o
- .comment       0x00000000       0x3d build/default/debug/USSensor.o
+ .comment       0x00000000       0x3d build/default/production/TimerConfig.o
+ .comment       0x00000000       0x3d build/default/production/Schedule.o
+ .comment       0x00000000       0x3d build/default/production/MTRControl.o
+ .comment       0x00000000       0x3d build/default/production/Bluetooth.o
+ .comment       0x00000000       0x3d build/default/production/IOConfig.o
+ .comment       0x00000000       0x3d build/default/production/Util.o
+ .comment       0x00000000       0x3d build/default/production/ADCConfig.o
+ .comment       0x00000000       0x3d build/default/production/USSensor.o
  .comment       0x00000000       0x3d /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
  .comment       0x00000000       0x3d /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
  .comment       0x00000000       0x3d /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
@@ -1018,145 +1005,129 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x1e0
+.debug_aranges  0x00000000      0x1c0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
+                0x00000000       0x20 build/default/production/newfile.o
  .debug_aranges
-                0x00000020       0x20 build/default/debug/newfile.o
+                0x00000020       0x20 build/default/production/TimerConfig.o
  .debug_aranges
-                0x00000040       0x20 build/default/debug/TimerConfig.o
+                0x00000040       0x20 build/default/production/Schedule.o
  .debug_aranges
-                0x00000060       0x20 build/default/debug/Schedule.o
+                0x00000060       0x20 build/default/production/MTRControl.o
  .debug_aranges
-                0x00000080       0x20 build/default/debug/MTRControl.o
+                0x00000080       0x20 build/default/production/Bluetooth.o
  .debug_aranges
-                0x000000a0       0x20 build/default/debug/Bluetooth.o
+                0x000000a0       0x20 build/default/production/IOConfig.o
  .debug_aranges
-                0x000000c0       0x20 build/default/debug/IOConfig.o
+                0x000000c0       0x20 build/default/production/Util.o
  .debug_aranges
-                0x000000e0       0x20 build/default/debug/Util.o
+                0x000000e0       0x20 build/default/production/ADCConfig.o
  .debug_aranges
-                0x00000100       0x20 build/default/debug/ADCConfig.o
+                0x00000100       0x20 build/default/production/USSensor.o
  .debug_aranges
-                0x00000120       0x20 build/default/debug/USSensor.o
+                0x00000120       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
  .debug_aranges
-                0x00000140       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+                0x00000140       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
  .debug_aranges
-                0x00000160       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+                0x00000160       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
  .debug_aranges
-                0x00000180       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+                0x00000180       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
  .debug_aranges
-                0x000001a0       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_aranges
-                0x000001c0       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+                0x000001a0       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x22a2
+.debug_info     0x00000000     0x1c60
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000       0xe4 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_info    0x000000e4      0x3bb build/default/debug/newfile.o
- .debug_info    0x0000049f      0x12a build/default/debug/TimerConfig.o
- .debug_info    0x000005c9      0x43d build/default/debug/Schedule.o
- .debug_info    0x00000a06      0x2c9 build/default/debug/MTRControl.o
- .debug_info    0x00000ccf      0x1b4 build/default/debug/Bluetooth.o
- .debug_info    0x00000e83      0x514 build/default/debug/IOConfig.o
- .debug_info    0x00001397      0x633 build/default/debug/Util.o
- .debug_info    0x000019ca      0x126 build/default/debug/ADCConfig.o
- .debug_info    0x00001af0      0x340 build/default/debug/USSensor.o
- .debug_info    0x00001e30       0xf5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_info    0x00001f25       0xce /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_info    0x00001ff3       0xd6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_info    0x000020c9       0xf1 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_info    0x000021ba       0xe8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_info    0x00000000      0x2fb build/default/production/newfile.o
+ .debug_info    0x000002fb      0x128 build/default/production/TimerConfig.o
+ .debug_info    0x00000423      0x379 build/default/production/Schedule.o
+ .debug_info    0x0000079c      0x2aa build/default/production/MTRControl.o
+ .debug_info    0x00000a46      0x195 build/default/production/Bluetooth.o
+ .debug_info    0x00000bdb      0x41d build/default/production/IOConfig.o
+ .debug_info    0x00000ff8      0x3e9 build/default/production/Util.o
+ .debug_info    0x000013e1      0x124 build/default/production/ADCConfig.o
+ .debug_info    0x00001505      0x2e9 build/default/production/USSensor.o
+ .debug_info    0x000017ee       0xf5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_info    0x000018e3       0xce /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_info    0x000019b1       0xd6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_info    0x00001a87       0xf1 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_info    0x00001b78       0xe8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_abbrev   0x00000000      0x866
+.debug_abbrev   0x00000000      0x6d7
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_abbrev  0x00000028       0xd8 build/default/debug/newfile.o
- .debug_abbrev  0x00000100       0x44 build/default/debug/TimerConfig.o
- .debug_abbrev  0x00000144      0x112 build/default/debug/Schedule.o
- .debug_abbrev  0x00000256       0xa3 build/default/debug/MTRControl.o
- .debug_abbrev  0x000002f9       0xa7 build/default/debug/Bluetooth.o
- .debug_abbrev  0x000003a0      0x168 build/default/debug/IOConfig.o
- .debug_abbrev  0x00000508      0x155 build/default/debug/Util.o
- .debug_abbrev  0x0000065d       0x44 build/default/debug/ADCConfig.o
- .debug_abbrev  0x000006a1       0xfd build/default/debug/USSensor.o
- .debug_abbrev  0x0000079e       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_abbrev  0x000007c6       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_abbrev  0x000007ee       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_abbrev  0x00000816       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_abbrev  0x0000083e       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_abbrev  0x00000000       0x7c build/default/production/newfile.o
+ .debug_abbrev  0x0000007c       0x44 build/default/production/TimerConfig.o
+ .debug_abbrev  0x000000c0       0xbb build/default/production/Schedule.o
+ .debug_abbrev  0x0000017b       0xa3 build/default/production/MTRControl.o
+ .debug_abbrev  0x0000021e       0x8b build/default/production/Bluetooth.o
+ .debug_abbrev  0x000002a9      0x151 build/default/production/IOConfig.o
+ .debug_abbrev  0x000003fa       0xe9 build/default/production/Util.o
+ .debug_abbrev  0x000004e3       0x44 build/default/production/ADCConfig.o
+ .debug_abbrev  0x00000527       0xe8 build/default/production/USSensor.o
+ .debug_abbrev  0x0000060f       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_abbrev  0x00000637       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_abbrev  0x0000065f       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_abbrev  0x00000687       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_abbrev  0x000006af       0x28 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_line     0x00000000      0xd62
+.debug_line     0x00000000      0xc67
  *(.debug_line)
- .debug_line    0x00000000       0x9a /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_line    0x0000009a       0xea build/default/debug/newfile.o
- .debug_line    0x00000184       0xb3 build/default/debug/TimerConfig.o
- .debug_line    0x00000237      0x118 build/default/debug/Schedule.o
- .debug_line    0x0000034f      0x100 build/default/debug/MTRControl.o
- .debug_line    0x0000044f       0xcd build/default/debug/Bluetooth.o
- .debug_line    0x0000051c      0x17c build/default/debug/IOConfig.o
- .debug_line    0x00000698      0x1e7 build/default/debug/Util.o
- .debug_line    0x0000087f       0xb2 build/default/debug/ADCConfig.o
- .debug_line    0x00000931      0x113 build/default/debug/USSensor.o
- .debug_line    0x00000a44       0xa7 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_line    0x00000aeb       0x94 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_line    0x00000b7f       0x98 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_line    0x00000c17       0xa5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_line    0x00000cbc       0xa6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_line    0x00000000       0xd9 build/default/production/newfile.o
+ .debug_line    0x000000d9       0xb3 build/default/production/TimerConfig.o
+ .debug_line    0x0000018c      0x112 build/default/production/Schedule.o
+ .debug_line    0x0000029e       0xf3 build/default/production/MTRControl.o
+ .debug_line    0x00000391       0xbf build/default/production/Bluetooth.o
+ .debug_line    0x00000450      0x17c build/default/production/IOConfig.o
+ .debug_line    0x000005cc      0x1b9 build/default/production/Util.o
+ .debug_line    0x00000785       0xb2 build/default/production/ADCConfig.o
+ .debug_line    0x00000837      0x112 build/default/production/USSensor.o
+ .debug_line    0x00000949       0xa7 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_line    0x000009f0       0x94 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_line    0x00000a84       0x98 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x00000b1c       0xa5 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_line    0x00000bc1       0xa6 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_frame    0x00000000      0x630
+.debug_frame    0x00000000      0x60c
  *(.debug_frame)
- .debug_frame   0x00000000       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_frame   0x00000020       0x2c build/default/debug/newfile.o
- .debug_frame   0x0000004c       0x30 build/default/debug/TimerConfig.o
- .debug_frame   0x0000007c       0xac build/default/debug/Schedule.o
- .debug_frame   0x00000128       0xa4 build/default/debug/MTRControl.o
- .debug_frame   0x000001cc       0x30 build/default/debug/Bluetooth.o
- .debug_frame   0x000001fc      0x1f8 build/default/debug/IOConfig.o
- .debug_frame   0x000003f4       0xac build/default/debug/Util.o
- .debug_frame   0x000004a0       0x30 build/default/debug/ADCConfig.o
- .debug_frame   0x000004d0       0xa8 build/default/debug/USSensor.o
- .debug_frame   0x00000578       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_frame   0x000005a4       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_frame   0x000005c4       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_frame   0x000005e4       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_frame   0x00000610       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_frame   0x00000000       0x2c build/default/production/newfile.o
+ .debug_frame   0x0000002c       0x30 build/default/production/TimerConfig.o
+ .debug_frame   0x0000005c       0xac build/default/production/Schedule.o
+ .debug_frame   0x00000108       0xa0 build/default/production/MTRControl.o
+ .debug_frame   0x000001a8       0x30 build/default/production/Bluetooth.o
+ .debug_frame   0x000001d8      0x1f8 build/default/production/IOConfig.o
+ .debug_frame   0x000003d0       0xac build/default/production/Util.o
+ .debug_frame   0x0000047c       0x30 build/default/production/ADCConfig.o
+ .debug_frame   0x000004ac       0xa8 build/default/production/USSensor.o
+ .debug_frame   0x00000554       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_frame   0x00000580       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_frame   0x000005a0       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_frame   0x000005c0       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_frame   0x000005ec       0x20 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_str      0x00000000       0x1f
+.debug_str      0x00000000       0x16
  *(.debug_str)
- .debug_str     0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_str     0x00000000        0x0 build/default/debug/newfile.o
- .debug_str     0x00000000        0x0 build/default/debug/TimerConfig.o
- .debug_str     0x00000000        0x0 build/default/debug/Schedule.o
- .debug_str     0x00000000        0x0 build/default/debug/MTRControl.o
- .debug_str     0x00000000        0x0 build/default/debug/Bluetooth.o
- .debug_str     0x00000000        0xc build/default/debug/IOConfig.o
- .debug_str     0x0000000c        0x9 build/default/debug/Util.o
- .debug_str     0x00000015        0x0 build/default/debug/ADCConfig.o
- .debug_str     0x00000015        0xa build/default/debug/USSensor.o
- .debug_str     0x0000001f        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_str     0x0000001f        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_str     0x0000001f        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_str     0x0000001f        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_str     0x0000001f        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_str     0x00000000        0x0 build/default/production/newfile.o
+ .debug_str     0x00000000        0x0 build/default/production/TimerConfig.o
+ .debug_str     0x00000000        0x0 build/default/production/Schedule.o
+ .debug_str     0x00000000        0x0 build/default/production/MTRControl.o
+ .debug_str     0x00000000        0x0 build/default/production/Bluetooth.o
+ .debug_str     0x00000000        0xc build/default/production/IOConfig.o
+ .debug_str     0x0000000c        0x0 build/default/production/Util.o
+ .debug_str     0x0000000c        0x0 build/default/production/ADCConfig.o
+ .debug_str     0x0000000c        0xa build/default/production/USSensor.o
+ .debug_str     0x00000016        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_str     0x00000016        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_str     0x00000016        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_str     0x00000016        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_str     0x00000016        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
-.debug_loc      0x00000000      0xf0c
+.debug_loc      0x00000000       0x58
  *(.debug_loc)
- .debug_loc     0x00000000       0x2c build/default/debug/newfile.o
- .debug_loc     0x0000002c       0x38 build/default/debug/TimerConfig.o
- .debug_loc     0x00000064      0x119 build/default/debug/Schedule.o
- .debug_loc     0x0000017d      0x118 build/default/debug/MTRControl.o
- .debug_loc     0x00000295       0x6f build/default/debug/Bluetooth.o
- .debug_loc     0x00000304      0x64a build/default/debug/IOConfig.o
- .debug_loc     0x0000094e      0x23f build/default/debug/Util.o
- .debug_loc     0x00000b8d       0x38 build/default/debug/ADCConfig.o
- .debug_loc     0x00000bc5      0x2ef build/default/debug/USSensor.o
- .debug_loc     0x00000eb4       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_loc     0x00000ee0       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_loc     0x00000000       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_loc     0x0000002c       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1176,48 +1147,45 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x60
+.debug_ranges   0x00000000       0x50
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
- .debug_ranges  0x00000010       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
- .debug_ranges  0x00000020       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
- .debug_ranges  0x00000030       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
- .debug_ranges  0x00000040       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .debug_ranges  0x00000050       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+ .debug_ranges  0x00000000       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_ranges  0x00000010       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+ .debug_ranges  0x00000020       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+ .debug_ranges  0x00000030       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+ .debug_ranges  0x00000040       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 
 .gnu.attributes
                 0x00000000       0x10
  *(.gnu.attributes)
  .gnu.attributes
-                0x00000000       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
+                0x00000000       0x10 build/default/production/newfile.o
  .gnu.attributes
-                0x00000010       0x10 build/default/debug/newfile.o
+                0x00000010       0x10 build/default/production/TimerConfig.o
  .gnu.attributes
-                0x00000020       0x10 build/default/debug/TimerConfig.o
+                0x00000020       0x10 build/default/production/Schedule.o
  .gnu.attributes
-                0x00000030       0x10 build/default/debug/Schedule.o
+                0x00000030       0x10 build/default/production/MTRControl.o
  .gnu.attributes
-                0x00000040       0x10 build/default/debug/MTRControl.o
+                0x00000040       0x10 build/default/production/Bluetooth.o
  .gnu.attributes
-                0x00000050       0x10 build/default/debug/Bluetooth.o
+                0x00000050       0x10 build/default/production/IOConfig.o
  .gnu.attributes
-                0x00000060       0x10 build/default/debug/IOConfig.o
+                0x00000060       0x10 build/default/production/Util.o
  .gnu.attributes
-                0x00000070       0x10 build/default/debug/Util.o
+                0x00000070       0x10 build/default/production/ADCConfig.o
  .gnu.attributes
-                0x00000080       0x10 build/default/debug/ADCConfig.o
+                0x00000080       0x10 build/default/production/USSensor.o
  .gnu.attributes
-                0x00000090       0x10 build/default/debug/USSensor.o
+                0x00000090       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
  .gnu.attributes
-                0x000000a0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+                0x000000a0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
  .gnu.attributes
-                0x000000b0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+                0x000000b0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
  .gnu.attributes
-                0x000000c0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+                0x000000c0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
  .gnu.attributes
-                0x000000d0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
- .gnu.attributes
-                0x000000e0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+                0x000000d0       0x10 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
 LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/libgcc.a
 START GROUP
 LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a
@@ -1231,15 +1199,15 @@ LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/libgcc.a
 LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a
 END GROUP
 LOAD /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/libgcc.a
-OUTPUT(dist/default/debug/Cerebot-master.debug.elf elf32-tradlittlemips)
+OUTPUT(dist/default/production/Cerebot-master.production.elf elf32-tradlittlemips)
 LOAD stack
 LOAD data_init
 
 .reginfo        0x00000000       0x18
  .reginfo       0x00000000       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
 
-.stack          0xa0000260      0x400
- .stack         0xa0000260      0x400 stack
+.stack          0xa0000058      0x400
+ .stack         0xa0000058      0x400 stack
 
 .bss            0x00000000        0x0
  .bss           0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
@@ -1572,64 +1540,64 @@ LOAD data_init
  .data          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/default_isr_vectors.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/USSensor.o
+ .bss           0x00000000        0x0 build/default/production/USSensor.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/USSensor.o
+ .data          0x00000000        0x0 build/default/production/USSensor.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/ADCConfig.o
+ .bss           0x00000000        0x0 build/default/production/ADCConfig.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/ADCConfig.o
+ .data          0x00000000        0x0 build/default/production/ADCConfig.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/Util.o
+ .bss           0x00000000        0x0 build/default/production/Util.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/Util.o
+ .data          0x00000000        0x0 build/default/production/Util.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/IOConfig.o
+ .bss           0x00000000        0x0 build/default/production/IOConfig.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/IOConfig.o
+ .data          0x00000000        0x0 build/default/production/IOConfig.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/Bluetooth.o
+ .bss           0x00000000        0x0 build/default/production/Bluetooth.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/Bluetooth.o
+ .data          0x00000000        0x0 build/default/production/Bluetooth.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/MTRControl.o
+ .bss           0x00000000        0x0 build/default/production/MTRControl.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/MTRControl.o
+ .data          0x00000000        0x0 build/default/production/MTRControl.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/Schedule.o
+ .bss           0x00000000        0x0 build/default/production/Schedule.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/Schedule.o
+ .data          0x00000000        0x0 build/default/production/Schedule.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/TimerConfig.o
+ .bss           0x00000000        0x0 build/default/production/TimerConfig.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/TimerConfig.o
+ .data          0x00000000        0x0 build/default/production/TimerConfig.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 build/default/debug/newfile.o
+ .bss           0x00000000        0x0 build/default/production/newfile.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/newfile.o
+ .data          0x00000000        0x0 build/default/production/newfile.o
 
 .bss            0x00000000        0x0
- .bss           0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
+ .bss           0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/debug-exception-return.o
 
 .data           0x00000000        0x0
- .data          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
+ .data          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/debug-exception-return.o
 
 .bss            0x00000000        0x0
  .bss           0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
@@ -1637,124 +1605,124 @@ LOAD data_init
 .data           0x00000000        0x0
  .data          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
 
-.text           0x9d000000     0x15a0
- .text          0x9d000000      0xbec build/default/debug/Util.o
+._debug_exception
+                0xbfc00480       0x2c
+ ._debug_exception
+                0xbfc00480       0x2c /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/debug-exception-return.o
+                0xbfc00480                __DbgExecReturn
+
+.text           0x9d000000     0x1598
+ .text          0x9d000000      0xbe4 build/default/production/Util.o
                 0x9d000000                delay
-                0x9d000050                pmodTempAndHumidity
-                0x9d000334                passiveLED
-                0x9d0005b0                numToLED
-                0x9d000b28                initAll
- .text          0x9d000bec      0x9b4 build/default/debug/IOConfig.o
-                0x9d000bec                gpio_init
-                0x9d000c58                uart_init
-                0x9d000cac                uart1_enable
-                0x9d000d00                uart1_disable
-                0x9d000d54                uart1_putc
-                0x9d000db4                uart1_puts
-                0x9d000e1c                uart1_rx
-                0x9d000e40                spi_init
-                0x9d000e84                oled_poweron
-                0x9d000f58                oled_powerdown
-                0x9d000f7c                i2c_init
-                0x9d000fd8                i2c_idle
-                0x9d0010c0                i2c_start
-                0x9d001134                i2c_stop
-                0x9d0011f0                i2c_rx
-                0x9d001444                i2c_tx
+                0x9d000048                pmodTempAndHumidity
+                0x9d00032c                passiveLED
+                0x9d0005a8                numToLED
+                0x9d000b20                initAll
+ .text          0x9d000be4      0x9b4 build/default/production/IOConfig.o
+                0x9d000be4                gpio_init
+                0x9d000c50                uart_init
+                0x9d000ca4                uart1_enable
+                0x9d000cf8                uart1_disable
+                0x9d000d4c                uart1_putc
+                0x9d000dac                uart1_puts
+                0x9d000e14                uart1_rx
+                0x9d000e38                spi_init
+                0x9d000e7c                oled_poweron
+                0x9d000f50                oled_powerdown
+                0x9d000f74                i2c_init
+                0x9d000fd0                i2c_idle
+                0x9d0010b8                i2c_start
+                0x9d00112c                i2c_stop
+                0x9d0011e8                i2c_rx
+                0x9d00143c                i2c_tx
 
-.text           0x9d0015a0      0x74c
- .text          0x9d0015a0      0x3a8 build/default/debug/USSensor.o
-                0x9d0015a0                usSensorInit
-                0x9d001608                usTrigger
-                0x9d00169c                usMeasure
-                0x9d0018a0                usDelay
-                0x9d0018f0                readSensorPin
- .text          0x9d001948      0x3a4 build/default/debug/Schedule.o
-                0x9d001948                interrupt_setup
-                0x9d001a14                motor_service
-                0x9d001b68                isr_handler
+.text           0x9d001598      0x774
+ .text          0x9d001598      0x3d4 build/default/production/Schedule.o
+                0x9d001598                interrupt_setup
+                0x9d001664                motor_service
+                0x9d0017b8                isr_handler
+ .text          0x9d00196c      0x3a0 build/default/production/USSensor.o
+                0x9d00196c                usSensorInit
+                0x9d0019d4                usTrigger
+                0x9d001a68                usMeasure
+                0x9d001c6c                usDelay
+                0x9d001cb4                readSensorPin
 
-.text           0x9d001cec      0x318
- .text          0x9d001cec      0x318 build/default/debug/MTRControl.o
-                0x9d001cec                mtr_init
-                0x9d001d2c                pwm_config
-                0x9d001d58                pwm_main
-                0x9d001ebc                pwm_ds_adjust
-                0x9d001fd0                enable_mtr
+.text           0x9d001d0c      0x250
+ .text          0x9d001d0c      0x250 build/default/production/MTRControl.o
+                0x9d001d0c                mtr_init
+                0x9d001d4c                pwm_config
+                0x9d001d78                pwm_main
+                0x9d001edc                pwm_ds_adjust
+                0x9d001f28                enable_mtr
 
 .text.general_exception
-                0x9d002004       0xdc
+                0x9d001f5c       0xdc
  .text.general_exception
-                0x9d002004       0xdc /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(general-exception.o)
-                0x9d002004                _general_exception_context
+                0x9d001f5c       0xdc /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(general-exception.o)
+                0x9d001f5c                _general_exception_context
 
-.text           0x9d0020e0      0x110
- .text          0x9d0020e0       0x8c build/default/debug/newfile.o
-                0x9d0020e0                main
- .text          0x9d00216c       0x84 build/default/debug/ADCConfig.o
-                0x9d00216c                adc_init
+.text           0x9d002038       0xfc
+ .text          0x9d002038       0x84 build/default/production/ADCConfig.o
+                0x9d002038                adc_init
+ .text          0x9d0020bc       0x78 build/default/production/TimerConfig.o
+                0x9d0020bc                timer_init
 
-.text           0x9d0021f0       0xe0
- .text          0x9d0021f0       0x78 build/default/debug/TimerConfig.o
-                0x9d0021f0                timer_init
- .text          0x9d002268       0x68 build/default/debug/Bluetooth.o
-                0x9d002268                bt_init
+.text           0x9d002134       0x68
+ .text          0x9d002134       0x68 build/default/production/Bluetooth.o
+                0x9d002134                bt_init
 
 .text.main_entry
-                0x9d0022d0       0x54
+                0x9d00219c       0x54
  .text.main_entry
-                0x9d0022d0       0x54 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
-                0x9d002304                __crt0_exit
+                0x9d00219c       0x54 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o
+                0x9d0021d0                __crt0_exit
 
 .text._bootstrap_exception_handler
-                0x9d002324       0x48
+                0x9d0021f0       0x48
  .text._bootstrap_exception_handler
-                0x9d002324       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
-                0x9d002324                _bootstrap_exception_handler
+                0x9d0021f0       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-bootstrap-exception-handler.o)
+                0x9d0021f0                _bootstrap_exception_handler
 
 .text._general_exception_handler
-                0x9d00236c       0x48
+                0x9d002238       0x48
  .text._general_exception_handler
-                0x9d00236c       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
-                0x9d00236c                _general_exception_handler
+                0x9d002238       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-general-exception-handler.o)
+                0x9d002238                _general_exception_handler
 
 .vector_default
-                0x9d0023b4       0x48
+                0x9d002280       0x48
  .vector_default
-                0x9d0023b4       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
-                0x9d0023b4                _DefaultInterrupt
+                0x9d002280       0x48 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
+                0x9d002280                _DefaultInterrupt
 
-.text           0x9d0023fc       0x44
- .text          0x9d0023fc       0x44 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/pic32_software_reset.o
-                0x9d0023fc                __pic32_software_reset
+.text           0x9d0022c8       0x70
+ .text          0x9d0022c8       0x44 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/pic32_software_reset.o
+                0x9d0022c8                __pic32_software_reset
+ .text          0x9d00230c       0x2c build/default/production/newfile.o
+                0x9d00230c                main
 
-.rodata         0x9d002440       0x1c
- .rodata        0x9d002440       0x1c build/default/debug/Bluetooth.o
+.rodata         0x9d002338       0x1c
+ .rodata        0x9d002338       0x1c build/default/production/Bluetooth.o
 
-.text           0x9d00245c       0x18
- .text          0x9d00245c       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-nmi-handler.o)
-                0x9d00245c                _nmi_handler
+.text           0x9d002354       0x18
+ .text          0x9d002354       0x18 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-nmi-handler.o)
+                0x9d002354                _nmi_handler
 
-.dinit          0x9d002474       0x10
- .dinit         0x9d002474       0x10 data_init
-
-.text.__exception_handler_break
-                0x9d002484        0xc
- .text.__exception_handler_break
-                0x9d002484        0xc /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
-                0x9d002484                __exception_handler_break
+.dinit          0x9d00236c       0x10
+ .dinit         0x9d00236c       0x10 data_init
 
 .text._on_reset
-                0x9d002490        0x8
+                0x9d00237c        0x8
  .text._on_reset
-                0x9d002490        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
-                0x9d002490                _on_reset
+                0x9d00237c        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-reset.o)
+                0x9d00237c                _on_reset
 
 .text._on_bootstrap
-                0x9d002498        0x8
+                0x9d002384        0x8
  .text._on_bootstrap
-                0x9d002498        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
-                0x9d002498                _on_bootstrap
+                0x9d002384        0x8 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(default-on-bootstrap.o)
+                0x9d002384                _on_bootstrap
 
 .text           0x00000000        0x0
  .text          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/libpic32.a(defaultinterrupt.o)
@@ -1916,7 +1884,7 @@ LOAD data_init
  .text          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/default_isr_vectors.o
 
 .text           0x00000000        0x0
- .text          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/software-debug-break.o
+ .text          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/debug-exception-return.o
 
 .text           0x00000000        0x0
  .text          0x00000000        0x0 /opt/microchip/xc32/v1.43/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX460F512L/crt0_mips32r2.o

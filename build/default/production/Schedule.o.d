@@ -1,4 +1,4 @@
-build/default/debug/Schedule.o:  \
+build/default/production/Schedule.o:  \
 Schedule.c  \
 Schedule.h  \
 SysConfig.h  \

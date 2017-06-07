@@ -16,8 +16,6 @@
  *GPIO Config
  ****************************************************/
 void gpio_init(void);
-int keypad(void);
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +50,7 @@ int keypad(void);
  *   0    0    0    0    0    0    0    0    0     0    0    0    0    0    0    0		--> 0x0000
  *
  */
-#define U1_MODE                 0x00000000
+#define _U1MODE                 0x00000000
 #define UARTON                  (1 << 15)
 #define UARTOFF                 (1 << 15)
 #define TXEN                    (1 << 10)
@@ -90,7 +88,7 @@ int keypad(void);
  *    0     0       0      0     0      0    0     0     0     0       1     0    0    0    0     0		--> 0x0020
  *
  */
-#define U1_STA                  0x01480020
+#define _U1STA                  0x01480020
 #define U1_UTXBF                ((U1STA & 0x200) >> 9)
 #define U1_TRMT                 ((U1STA & 0x100) >> 8)
 
@@ -111,7 +109,7 @@ int keypad(void);
  *   0    0    0    0    0    0    0    0    0    0    0    1    1    0    0    1       --> 0x0019
  *
  */
-#define U1_BRG                  0x00000019
+#define _U1BRG                  0x00000019
 
 
 void uart_init(void);
@@ -154,7 +152,7 @@ void uart1_rx(void);
  * [15] [14] [13]  [12]   [11]   [10]  [ 9] [ 8] [ 7] [ 6] [ 5]  [ 4] [ 3] [ 2] [ 1] [ 0]
  *   0    0    1     1      0      0     0    0    0    0    1     0    0    0    0    0		--> 3820
  */
-#define SPI_1_CON       0xE0023020
+#define _SPI1CON       0xE0023020
 #define SPION           15
 
 /*SPI1 Baud Rate Register
@@ -166,7 +164,7 @@ void uart1_rx(void);
  * [15] [14] [13] [12] [11] [10] [ 9] [ 8] [ 7] [ 6] [ 5] [ 4] [ 3] [ 2] [ 1] [ 0]
  *   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0		--> 0000
  */
-#define SPI_1_BRG       0x00000000
+#define _SPI1BRG       0x00000000
 
 //Status register macros
 #define SPIBUSYSHFT     11  //SPI busy bit
@@ -191,7 +189,7 @@ void uart1_rx(void);
  * [15] [14] [13]  [12]  [11] [10] [ 9] [ 8] [ 7] [ 6] [ 5]  [ 4] [ 3] [ 2] [ 1] [ 0]
  *   1    0    1     1     1    0    0    0    0    0    1     0    0    0    0    0		--> B820
  */
-#define SPI_2_CON 0xA002B820
+#define _SPI2CON 0xA002B820
 
 /*SPI2 Baud Rate Register
  *
@@ -202,7 +200,7 @@ void uart1_rx(void);
  * [15] [14] [13] [12] [11] [10] [ 9] [ 8] [ 7] [ 6] [ 5] [ 4] [ 3] [ 2] [ 1] [ 0]
  *   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0		--> 0000
  */
-#define SPI_2_BRG 0xA002B820
+#define _SPI2BRG 0xA002B820
 
 
 
@@ -258,7 +256,7 @@ void oled_powerdown();
     * [15] [14] [13]  [12]   [11]  [10]  [ 9]  [ 8] [ 7]  [ 6]  [ 5]  [ 4] [ 3] [ 2] [ 1] [ 0]
     *   1    0    1     0      0     0     0     0    0     0     0     0    0    0    0    0
     */ 
-#define I2C1_CON            0x0000A000
+#define _I2C1CON            0x0000A000
 
 
 
@@ -475,7 +473,7 @@ void oled_powerdown();
     * [15] [14] [13] [12] [11] [10] [ 9] [ 8] [ 7] [ 6] [ 5] [ 4] [ 3] [ 2] [ 1] [ 0]
     *   0    0    0    0    0    0    0    0    0    0    0    0    1    0    1    0    --> 0x000A
     */
-#define I2C1_BRG            0xA;    //400kHz
+#define _I2C1BRG            0xA;    //400kHz
 
 
    /*I2C1 Transmit Data Register
@@ -509,8 +507,3 @@ uint8_t i2c_start(void);
 void i2c_stop(void);
 void i2c_rx(unsigned short chipAddress, unsigned short int address, unsigned char * buffer, int numBytesToRead);
 void i2c_tx(unsigned short chipAddress,unsigned short int address, unsigned char * dataToWrite, int numBytesToWrite);
-
-
-
-
-void delay(void);

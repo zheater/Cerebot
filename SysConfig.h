@@ -615,5 +615,137 @@
 #define U2TXINT                 42
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/****************************************************
+ *ADC base addresses
+ ****************************************************/
+//ADC1 Registers
+#define AD1CON1_BASE            (0xBF809000)  // AD1 Control Register 1
+#define AD1CON1                 *(volatile uint32_t *)(AD1CON1_BASE)
+#define AD1CON1SET              *(volatile uint32_t *)(AD1CON1_BASE + SET_OFFSET)
+#define AD1CON1CLR              *(volatile uint32_t *)(AD1CON1_BASE + CLR_OFFSET)
+#define AD1CON1INV              *(volatile uint32_t *)(AD1CON1_BASE + INV_OFFSET)
+#define AD1CON2_BASE            (0xBF809010)  // AD1 Control Register 2
+#define AD1CON2                 *(volatile uint32_t *)(AD1CON2_BASE)
+#define AD1CON2SET              *(volatile uint32_t *)(AD1CON2_BASE + SET_OFFSET)
+#define AD1CON2CLR              *(volatile uint32_t *)(AD1CON2_BASE + CLR_OFFSET)
+#define AD1CON2INV              *(volatile uint32_t *)(AD1CON2_BASE + INV_OFFSET)
+#define AD1CON3_BASE            (0xBF809020)  // AD1 Control Register 3
+#define AD1CON3                 *(volatile uint32_t *)(AD1CON3_BASE)
+#define AD1CON3SET              *(volatile uint32_t *)(AD1CON3_BASE + SET_OFFSET)
+#define AD1CON3CLR              *(volatile uint32_t *)(AD1CON3_BASE + CLR_OFFSET)
+#define AD1CON3INV              *(volatile uint32_t *)(AD1CON3_BASE + INV_OFFSET)
+#define AD1CHS_BASE             (0xBF809040)  // AD1 Input Select Register
+#define AD1CHS                  *(volatile uint32_t *)(AD1CHS_BASE)
+#define AD1CHSSET               *(volatile uint32_t *)(AD1CHS_BASE + SET_OFFSET)
+#define AD1CHSCLR               *(volatile uint32_t *)(AD1CHS_BASE + CLR_OFFSET)
+#define AD1CHSINV               *(volatile uint32_t *)(AD1CHS_BASE + INV_OFFSET)
+#define AD1PCFG_BASE            (0xBF809060)  // AD1 Port Config Register
+#define AD1PCFG                 *(volatile uint32_t *)(AD1PCFG_BASE)
+#define AD1PCFGSET              *(volatile uint32_t *)(AD1PCFG_BASE + SET_OFFSET)
+#define AD1PCFGCLR              *(volatile uint32_t *)(AD1PCFG_BASE + CLR_OFFSET)
+#define AD1PCFGINV              *(volatile uint32_t *)(AD1PCFG_BASE + INV_OFFSET)
+#define AD1CSSL_BASE            (0xBF809050)  // AD1 Input Scan Select Register
+#define AD1CSSL                 *(volatile uint32_t *)(AD1CSSL_BASE)
+#define AD1CSSLSET              *(volatile uint32_t *)(AD1CSSL_BASE + SET_OFFSET)
+#define AD1CSSLCLR              *(volatile uint32_t *)(AD1CSSL_BASE + CLR_OFFSET)
+#define AD1CSSLINV              *(volatile uint32_t *)(AD1CSSL_BASE + INV_OFFSET)
+//ADC1 Buffers
+#define ADC1BUF0_BASE           (0xBF809070)  // ADC1 Buffer 0
+#define ADC1BUF0                *(volatile uint32_t *)(ADC1BUF0_BASE)
+#define ADC1BUF0SET             *(volatile uint32_t *)(ADC1BUF0_BASE + SET_OFFSET)
+#define ADC1BUF0CLR             *(volatile uint32_t *)(ADC1BUF0_BASE + CLR_OFFSET)
+#define ADC1BUF0INV             *(volatile uint32_t *)(ADC1BUF0_BASE + INV_OFFSET)
+#define ADC1BUF1_BASE           (0xBF809080)  // ADC1 Buffer 1
+#define ADC1BUF1                *(volatile uint32_t *)(ADC1BUF1_BASE)
+#define ADC1BUF1SET             *(volatile uint32_t *)(ADC1BUF1_BASE + SET_OFFSET)
+#define ADC1BUF1CLR             *(volatile uint32_t *)(ADC1BUF1_BASE + CLR_OFFSET)
+#define ADC1BUF1INV             *(volatile uint32_t *)(ADC1BUF1_BASE + INV_OFFSET)
+#define ADC1BUF2_BASE           (0xBF809090)  // ADC1 Buffer 2
+#define ADC1BUF2                *(volatile uint32_t *)(ADC1BUF2_BASE)
+#define ADC1BUF2SET             *(volatile uint32_t *)(ADC1BUF2_BASE + SET_OFFSET)
+#define ADC1BUF2CLR             *(volatile uint32_t *)(ADC1BUF2_BASE + CLR_OFFSET)
+#define ADC1BUF2INV             *(volatile uint32_t *)(ADC1BUF2_BASE + INV_OFFSET)
+#define ADC1BUF3_BASE           (0xBF8090A0)  // ADC1 Buffer 3
+#define ADC1BUF3                *(volatile uint32_t *)(ADC1BUF3_BASE)
+#define ADC1BUF3SET             *(volatile uint32_t *)(ADC1BUF3_BASE + SET_OFFSET)
+#define ADC1BUF3CLR             *(volatile uint32_t *)(ADC1BUF3_BASE + CLR_OFFSET)
+#define ADC1BUF3INV             *(volatile uint32_t *)(ADC1BUF3_BASE + INV_OFFSET)
+#define ADC1BUF4_BASE           (0xBF8090B0)  // ADC1 Buffer 4
+#define ADC1BUF4                *(volatile uint32_t *)(ADC1BUF4_BASE)
+#define ADC1BUF4SET             *(volatile uint32_t *)(ADC1BUF4_BASE + SET_OFFSET)
+#define ADC1BUF4CLR             *(volatile uint32_t *)(ADC1BUF4_BASE + CLR_OFFSET)
+#define ADC1BUF4INV             *(volatile uint32_t *)(ADC1BUF4_BASE + INV_OFFSET)
+#define ADC1BUF5_BASE           (0xBF8090C0)  // ADC1 Buffer 5
+#define ADC1BUF5                *(volatile uint32_t *)(ADC1BUF5_BASE)
+#define ADC1BUF5SET             *(volatile uint32_t *)(ADC1BUF5_BASE + SET_OFFSET)
+#define ADC1BUF5CLR             *(volatile uint32_t *)(ADC1BUF5_BASE + CLR_OFFSET)
+#define ADC1BUF5INV             *(volatile uint32_t *)(ADC1BUF5_BASE + INV_OFFSET)
+#define ADC1BUF6_BASE           (0xBF8090D0)  // ADC1 Buffer 6
+#define ADC1BUF6                *(volatile uint32_t *)(ADC1BUF6_BASE)
+#define ADC1BUF6SET             *(volatile uint32_t *)(ADC1BUF6_BASE + SET_OFFSET)
+#define ADC1BUF6CLR             *(volatile uint32_t *)(ADC1BUF6_BASE + CLR_OFFSET)
+#define ADC1BUF6INV             *(volatile uint32_t *)(ADC1BUF6_BASE + INV_OFFSET)
+#define ADC1BUF7_BASE           (0xBF8090E0)  // ADC1 Buffer 7
+#define ADC1BUF7                *(volatile uint32_t *)(ADC1BUF7_BASE)
+#define ADC1BUF7SET             *(volatile uint32_t *)(ADC1BUF7_BASE + SET_OFFSET)
+#define ADC1BUF7CLR             *(volatile uint32_t *)(ADC1BUF7_BASE + CLR_OFFSET)
+#define ADC1BUF7INV             *(volatile uint32_t *)(ADC1BUF7_BASE + INV_OFFSET)
+#define ADC1BUF8_BASE           (0xBF8090F0)  // ADC1 Buffer 8
+#define ADC1BUF8                *(volatile uint32_t *)(ADC1BUF8_BASE)
+#define ADC1BUF8SET             *(volatile uint32_t *)(ADC1BUF8_BASE + SET_OFFSET)
+#define ADC1BUF8CLR             *(volatile uint32_t *)(ADC1BUF8_BASE + CLR_OFFSET)
+#define ADC1BUF8INV             *(volatile uint32_t *)(ADC1BUF8_BASE + INV_OFFSET)
+#define ADC1BUF9_BASE           (0xBF809100)  // ADC1 Buffer 9
+#define ADC1BUF9                *(volatile uint32_t *)(ADC1BUF9_BASE)
+#define ADC1BUF9SET             *(volatile uint32_t *)(ADC1BUF9_BASE + SET_OFFSET)
+#define ADC1BUF9CLR             *(volatile uint32_t *)(ADC1BUF9_BASE + CLR_OFFSET)
+#define ADC1BUF9INV             *(volatile uint32_t *)(ADC1BUF9_BASE + INV_OFFSET)
+#define ADC1BUFA_BASE           (0xBF809110)  // ADC1 Buffer A
+#define ADC1BUFA                *(volatile uint32_t *)(ADC1BUFA_BASE)
+#define ADC1BUFASET             *(volatile uint32_t *)(ADC1BUFA_BASE + SET_OFFSET)
+#define ADC1BUFACLR             *(volatile uint32_t *)(ADC1BUFA_BASE + CLR_OFFSET)
+#define ADC1BUFAINV             *(volatile uint32_t *)(ADC1BUFA_BASE + INV_OFFSET)
+#define ADC1BUFB_BASE           (0xBF809120)  // ADC1 Buffer B
+#define ADC1BUFB                *(volatile uint32_t *)(ADC1BUFB_BASE)
+#define ADC1BUFBSET             *(volatile uint32_t *)(ADC1BUFB_BASE + SET_OFFSET)
+#define ADC1BUFBCLR             *(volatile uint32_t *)(ADC1BUFB_BASE + CLR_OFFSET)
+#define ADC1BUFBINV             *(volatile uint32_t *)(ADC1BUFB_BASE + INV_OFFSET)
+#define ADC1BUFC_BASE           (0xBF809130)  // ADC1 Buffer C
+#define ADC1BUFC                *(volatile uint32_t *)(ADC1BUFC_BASE)
+#define ADC1BUFCSET             *(volatile uint32_t *)(ADC1BUFC_BASE + SET_OFFSET)
+#define ADC1BUFCCLR             *(volatile uint32_t *)(ADC1BUFC_BASE + CLR_OFFSET)
+#define ADC1BUFCINV             *(volatile uint32_t *)(ADC1BUFC_BASE + INV_OFFSET)
+#define ADC1BUFD_BASE           (0xBF809140)  // ADC1 Buffer D
+#define ADC1BUFD                *(volatile uint32_t *)(ADC1BUFD_BASE)
+#define ADC1BUFDSET             *(volatile uint32_t *)(ADC1BUFD_BASE + SET_OFFSET)
+#define ADC1BUFDCLR             *(volatile uint32_t *)(ADC1BUFD_BASE + CLR_OFFSET)
+#define ADC1BUFDINV             *(volatile uint32_t *)(ADC1BUFD_BASE + INV_OFFSET)
+#define ADC1BUFE_BASE           (0xBF809150)  // ADC1 Buffer E
+#define ADC1BUFE                *(volatile uint32_t *)(ADC1BUFE_BASE)
+#define ADC1BUFESET             *(volatile uint32_t *)(ADC1BUFE_BASE + SET_OFFSET)
+#define ADC1BUFECLR             *(volatile uint32_t *)(ADC1BUFE_BASE + CLR_OFFSET)
+#define ADC1BUFEINV             *(volatile uint32_t *)(ADC1BUFE_BASE + INV_OFFSET)
+#define ADC1BUFF_BASE           (0xBF809160)  // ADC1 Buffer F
+#define ADC1BUFF                *(volatile uint32_t *)(ADC1BUFF_BASE)
+#define ADC1BUFFSET             *(volatile uint32_t *)(ADC1BUFF_BASE + SET_OFFSET)
+#define ADC1BUFFCLR             *(volatile uint32_t *)(ADC1BUFF_BASE + CLR_OFFSET)
+#define ADC1BUFFINV             *(volatile uint32_t *)(ADC1BUFF_BASE + INV_OFFSET)
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/****************************************************
+ *Device config addresses
+ ****************************************************/
+//Device Config Registers
 
 #endif /* SYSCONFIG_H_ */
